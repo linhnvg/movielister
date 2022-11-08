@@ -19,3 +19,5 @@
     @apply font-bold uppercase text-sm leading-6 tracking-wider;
   }
 }
+
+@import './input';
