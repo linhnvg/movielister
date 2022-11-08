@@ -5,14 +5,17 @@ export default function Home({ data }) {
   return (
     <div>
       <nav>
-        <Link href="/" replace>
-          All
+        <Link href="/movie" replace>
+          Popular
         </Link>
-        <Link href="?tab=movie" replace>
-          Movies
+        <Link href="?tab=now_playing" replace>
+          Now Playing
         </Link>
-        <Link href="?tab=tv" replace>
-          TV Shows
+        <Link href="?tab=upcoming" replace>
+          Upcoming
+        </Link>
+        <Link href="?tab=top_rated" replace>
+          Top Rated
         </Link>
       </nav>
       <pre>{JSON.stringify(data, null, 2)}</pre>
@@ -21,7 +24,7 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const response = await tmdb.get(`/trending/${query.tab || 'all'}/week`)
+  const response = await tmdb.get(`/movie/${query.tab || 'popular'}`)
 
   if (response.status === 404) {
     return {

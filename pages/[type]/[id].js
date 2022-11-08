@@ -1,27 +1,15 @@
 import { tmdb } from '@lib/service'
-import Link from 'next/link'
 
 export default function Home({ data }) {
   return (
     <div>
-      <nav>
-        <Link href="/" replace>
-          All
-        </Link>
-        <Link href="?tab=movie" replace>
-          Movies
-        </Link>
-        <Link href="?tab=tv" replace>
-          TV Shows
-        </Link>
-      </nav>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   )
 }
 
-export async function getServerSideProps({ query }) {
-  const response = await tmdb.get(`/trending/${query.tab || 'all'}/week`)
+export async function getServerSideProps({ params }) {
+  const response = await tmdb.get(`/${params.type}/${params.id}`)
 
   if (response.status === 404) {
     return {
