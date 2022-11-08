@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .heading {
+    @apply font-bold text-2xl leading-10 tracking-tight;
+  }
+
+  .heading-lg {
+    @apply font-bold text-4xl leading-[56px] tracking-tight;
+  }
+
+  .heading-xl {
+    @apply font-bold text-6xl leading-[80px] tracking-tight;
+  }
+
+  .overline {
+    @apply font-bold uppercase text-sm leading-6 tracking-wider;
+  }
+}
