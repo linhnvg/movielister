@@ -20,7 +20,8 @@
   @apply left-14;
 }
 
-.input:focus + .input-label {
+.input:focus + .input-label,
+.input:not(:placeholder-shown) + .input-label {
   @apply -translate-y-6 text-grey-400;
 }
 
