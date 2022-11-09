@@ -16,7 +16,7 @@
   }
 
   .heading-xl {
-    @apply font-semibold text-6xl leading-[80px] tracking-tight;
+    @apply font-semibold text-5xl md:text-6xl leading-[80px] tracking-tight;
   }
 
   .overline {
