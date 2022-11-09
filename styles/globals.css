@@ -29,6 +29,14 @@
   }
 }
 
+body {
+  @apply bg-grey-900 text-grey-50;
+  background-image: url('/bg.png');
+  background-size: 100%;
+  background-position: 50% -160px;
+  background-repeat: repeat-y;
+}
+
 @import './input';
 @import './navbar';
 @import './card';
