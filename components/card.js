@@ -19,8 +19,10 @@ export default function Card({
       className={clsx('card', className)}
       {...props}
     >
-      {image && <Poster path={image} alt={title} />}
-      {rating && <Rating average={rating} className="absolute top-4 left-4" />}
+      <Poster path={image} alt={title} />
+      {rating >= 0 && (
+        <Rating average={rating} className="absolute top-4 left-4" />
+      )}
       {title && <div className="card-title">{title}</div>}
       {children}
     </Link>
