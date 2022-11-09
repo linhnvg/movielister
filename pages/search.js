@@ -13,7 +13,7 @@ export default function Home({ data, query }) {
   const router = useRouter()
 
   return (
-    <div className="animate-fade-in">
+    <div>
       <Head>
         <title>Search &mdash; Movielist</title>
         <meta
@@ -25,7 +25,7 @@ export default function Home({ data, query }) {
 
       <Navbar />
 
-      <div className="container pb-12">
+      <div className="container pb-12 animate-fade-in">
         <div className="my-20 max-w-xl">
           <h1 className="heading-xl mt-4">Search</h1>
           <Search />

@@ -12,7 +12,7 @@ export default function TV({ data, query }) {
   const router = useRouter()
 
   return (
-    <div className="animate-fade-in">
+    <div>
       <Head>
         <title>TV Shows &mdash; Movielister</title>
         <meta
@@ -24,7 +24,7 @@ export default function TV({ data, query }) {
 
       <Navbar />
 
-      <div className="container pb-12">
+      <div className="container pb-12 animate-fade-in">
         <div className="my-20 max-w-xl">
           <h1 className="heading-xl mt-4">TV Shows</h1>
 
