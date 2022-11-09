@@ -8,7 +8,7 @@ import Search from '@components/icons/search.svg'
 import Head from 'next/head'
 import Footer from '@components/footer'
 
-export default function Home({ data }) {
+export default function Home({ data, query }) {
   const router = useRouter()
 
   return (
@@ -44,7 +44,9 @@ export default function Home({ data }) {
 
           <SegmentedControl
             className="my-6"
-            defaultIndex={0}
+            defaultIndex={
+              query.tab === 'tv' ? 2 : query.tab === 'movie' ? 1 : 0
+            }
             segments={[
               {
                 label: 'All',
@@ -107,6 +109,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       data: response.data,
+      query,
     },
   }
 }
