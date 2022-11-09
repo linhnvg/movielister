@@ -33,6 +33,18 @@
     @apply lg:grid-cols-3;
     @apply xl:grid-cols-4;
   }
+
+  .button {
+    @apply inline-flex items-center py-4 px-8 rounded-xl cursor-pointer transition;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .button-primary {
+    @apply bg-primary-400;
+    @apply hover:bg-primary-500;
+    @apply active:bg-primary-600;
+    @apply disabled:hover:bg-primary-400;
+  }
 }
 
 body {
