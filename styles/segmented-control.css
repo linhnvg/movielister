@@ -1,0 +1,15 @@
+.segments {
+  @apply bg-black-20 inline-flex rounded-xl backdrop-blur-md p-2;
+}
+
+.segment input {
+  @apply appearance-none;
+}
+
+.segment label {
+  @apply inline-block px-8 py-2 text-gray-300 rounded-lg cursor-pointer transition;
+}
+
+.segment.active label {
+  @apply bg-primary-400 text-white-100;
+}
