@@ -22,6 +22,10 @@ module.exports = {
           '2xl': '6rem',
         },
       },
+      aspectRatio: {
+        poster: '2/3',
+        backdrop: '16/9',
+      },
       colors: {
         primary: {
           50: '#EBE9FE',
