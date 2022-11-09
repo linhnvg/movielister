@@ -7,7 +7,7 @@
 }
 
 .segment label {
-  @apply inline-block px-8 py-2 text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap;
+  @apply inline-block px-8 py-2 font-semibold text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap;
 }
 
 .segment.active label {
