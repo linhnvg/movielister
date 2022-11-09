@@ -171,6 +171,17 @@ export default function Home({ data, type }) {
                       {data.genres.map((genre) => genre.name).join(', ')}
                     </span>
                   </p>
+
+                  {data.created_by.length > 0 && (
+                    <p className="col-span-2">
+                      <span className="text-sm text-white-30">Creators</span>
+                      <span className="block mt-2">
+                        {data.created_by
+                          .map((person) => person.name)
+                          .join(', ')}
+                      </span>
+                    </p>
+                  )}
                 </div>
               )}
             </div>
