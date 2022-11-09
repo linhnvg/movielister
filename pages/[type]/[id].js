@@ -5,6 +5,9 @@ import Poster from '@components/poster'
 import Rating from '@components/rating'
 import Head from 'next/head'
 import Image from 'next/image'
+import Card from '@components/card'
+import Link from 'next/link'
+import Part from '@components/part'
 
 export default function Home({ data, type }) {
   return (
@@ -184,6 +187,35 @@ export default function Home({ data, type }) {
                   )}
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {type === 'collection' && (
+          <div className="mt-8 md:mx-12 xl:mx-20 space-y-6">
+            {data.overview && (
+              <div>
+                <h2 className="heading">Overview</h2>
+                <p className="text-white-65 mt-2">{data.overview}</p>
+              </div>
+            )}
+
+            <div>
+              <h3 className="heading mb-4">Parts</h3>
+
+              <div className="space-y-6">
+                {data.parts.map((part) => (
+                  <Part
+                    key={part.id}
+                    id={part.id}
+                    title={part.title}
+                    poster={part.poster_path}
+                    overview={part.overview}
+                    rating={part.vote_average}
+                    date={part.release_date}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         )}
