@@ -8,11 +8,12 @@ export function InputGroup({ children, className, ...props }) {
   )
 }
 
-export function Input({ hasIcon, className, ...props }) {
+export function Input({ hasIcon, className, forwardedRef, ...props }) {
   return (
     <input
       type="text"
       className={clsx('input', hasIcon && 'has-icon', className)}
+      ref={forwardedRef}
       {...props}
     />
   )

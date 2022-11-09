@@ -1,12 +1,11 @@
 import { tmdb } from '@lib/service'
 import { useRouter } from 'next/router'
-import { Input, InputGroup, InputLabel } from '@components/input'
 import Card from '@components/card'
 import Navbar from '@components/navbar'
 import SegmentedControl from '@components/segmented-control'
-import Search from '@components/icons/search.svg'
 import Head from 'next/head'
 import Footer from '@components/footer'
+import Search from '@components/search'
 
 export default function Home({ data, query }) {
   const router = useRouter()
@@ -32,11 +31,7 @@ export default function Home({ data, query }) {
             pariatur optio quas! ✌
           </p>
 
-          <InputGroup className="mt-8">
-            <Input placeholder="eg. avengers" hasIcon />
-            <InputLabel>Search Movies or TV Shows</InputLabel>
-            <Search className="input-icon text-2xl text-gray-500" />
-          </InputGroup>
+          <Search />
         </div>
 
         <div className="flex flex-col md:items-center md:flex-row">
