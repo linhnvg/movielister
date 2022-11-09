@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <Logo className="text-4xl mx-auto" />
         <p className="text-center max-w-lg mx-auto mt-8 text-grey-400">
-          &copy; 2022 Movielist cretated by{' '}
+          &copy; 2022 Movielist created by{' '}
           <a href="https://oktaycolakoglu.com" target="_blank" rel="noreferrer">
             Oktay Colakoglu
           </a>{' '}

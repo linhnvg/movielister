@@ -3,7 +3,7 @@
 }
 
 .input {
-  @apply w-full text-grey-300 border-2 border-grey-700 rounded-xl bg-black-10 pt-7 pb-3 px-4 h-16 transition;
+  @apply w-full text-white-100 border-2 border-grey-700 rounded-xl bg-black-10 pt-7 pb-3 px-4 h-16 transition;
   @apply focus:outline-none focus:border-primary-500;
   @apply placeholder:text-transparent focus:placeholder:text-grey-600;
 }

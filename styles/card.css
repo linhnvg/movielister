@@ -1,5 +1,6 @@
 .card {
-  @apply bg-grey-800 block bg-opacity-80 backdrop-blur-lg p-2 pb-0 rounded-xl relative;
+  @apply bg-black-30 block bg-opacity-80 backdrop-blur-lg p-2 pb-0 rounded-xl relative transition;
+  @apply hover:bg-black-50;
 }
 
 .card-title {

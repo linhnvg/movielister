@@ -35,7 +35,7 @@ export default function Home({ data }) {
           <InputGroup className="mt-8">
             <Input placeholder="eg. avengers" hasIcon />
             <InputLabel>Search Movies or TV Shows</InputLabel>
-            <Search className="input-icon text-2xl" />
+            <Search className="input-icon text-2xl text-gray-500" />
           </InputGroup>
         </div>
 
