@@ -1,0 +1,7 @@
+.navbar {
+  @apply bg-grey-900 py-4  bg-opacity-80;
+}
+
+.nav-link {
+  @apply link inline-flex items-center px-4 py-3;
+}

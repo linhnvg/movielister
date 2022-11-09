@@ -18,6 +18,12 @@
   .overline {
     @apply font-bold uppercase text-sm leading-6 tracking-wider;
   }
+
+  .link {
+    @apply font-bold text-grey-200 transition;
+    @apply hover:text-grey-100;
+  }
 }
 
 @import './input';
+@import './navbar';
