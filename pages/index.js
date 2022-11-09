@@ -6,6 +6,7 @@ import SegmentedControl from '@components/segmented-control'
 import Head from 'next/head'
 import Footer from '@components/footer'
 import Search from '@components/search'
+import Pagination from '@components/pagination'
 
 export default function Home({ data, query }) {
   const router = useRouter()
@@ -13,7 +14,7 @@ export default function Home({ data, query }) {
   return (
     <div className="animate-fade-in">
       <Head>
-        <title>Movielist - explore movies, tv shows and more</title>
+        <title>Movielist &mdash; explore movies, tv shows and more</title>
         <meta
           name="description"
           content="Movielist, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"
@@ -34,33 +35,27 @@ export default function Home({ data, query }) {
           <Search />
         </div>
 
-        <div className="flex flex-col md:items-center md:flex-row">
-          <h2 className="heading text-gray-400 mr-6">Trendings</h2>
-
-          <SegmentedControl
-            className="my-6"
-            defaultIndex={
-              query.tab === 'tv' ? 2 : query.tab === 'movie' ? 1 : 0
-            }
-            segments={[
-              {
-                label: 'All',
-                value: '',
-              },
-              {
-                label: 'Movies',
-                value: 'movie',
-              },
-              {
-                label: 'TV Shows',
-                value: 'tv',
-              },
-            ]}
-            callback={(val) =>
-              router.replace({ pathname: '/', query: { tab: val } })
-            }
-          />
-        </div>
+        <SegmentedControl
+          className="my-6"
+          defaultIndex={query.tab === 'tv' ? 2 : query.tab === 'movie' ? 1 : 0}
+          segments={[
+            {
+              label: 'All',
+              value: '',
+            },
+            {
+              label: 'Movies',
+              value: 'movie',
+            },
+            {
+              label: 'TV Shows',
+              value: 'tv',
+            },
+          ]}
+          callback={(val) =>
+            router.replace({ pathname: '/', query: { tab: val } })
+          }
+        />
 
         <div className="card-list">
           {data.results.map((result) => (
@@ -74,6 +69,12 @@ export default function Home({ data, query }) {
             />
           ))}
         </div>
+
+        <Pagination
+          currentPage={query.page}
+          totalPages={data.total_pages}
+          className="mt-8"
+        />
       </div>
 
       <Footer />
@@ -82,7 +83,11 @@ export default function Home({ data, query }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const response = await tmdb.get(`/trending/${query.tab || 'all'}/week`)
+  const response = await tmdb.get(`/trending/${query.tab || 'all'}/week`, {
+    params: {
+      page: query.page || 1,
+    },
+  })
 
   if (response.status === 404) {
     return {

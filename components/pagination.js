@@ -34,7 +34,7 @@ export default function Pagination({
         Previous
       </button>
 
-      <span>
+      <span className="flex-shrink-0">
         {current} / {total}
       </span>
 
