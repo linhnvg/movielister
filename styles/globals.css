@@ -39,6 +39,10 @@
     @apply disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
+  .button-sm {
+    @apply py-3 px-5 text-sm;
+  }
+
   .button-primary {
     @apply bg-primary-400;
     @apply hover:bg-primary-500;
