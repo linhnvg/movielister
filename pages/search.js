@@ -15,7 +15,7 @@ export default function Home({ data, query }) {
   return (
     <div>
       <Head>
-        <title>Search &mdash; Movielist</title>
+        <title>Search &mdash; Movielister</title>
         <meta
           name="description"
           content="Movielist, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"

@@ -14,7 +14,7 @@ export default function Home({ data, query }) {
   return (
     <div>
       <Head>
-        <title>Movielist &mdash; explore movies, tv shows and more</title>
+        <title>Movielister &mdash; explore movies, tv shows and more</title>
         <meta
           name="description"
           content="Movielist, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"
