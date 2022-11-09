@@ -12,7 +12,7 @@ export default function Home({ data, query }) {
   const router = useRouter()
 
   return (
-    <div>
+    <div className="animate-fade-in">
       <Head>
         <title>Movielist - explore movies, tv shows and more</title>
         <meta

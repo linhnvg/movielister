@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Home({ data }) {
   return (
-    <div>
+    <div className="animate-fade-in">
       <nav>
         <Link href="/tv" replace>
           Popular

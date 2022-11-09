@@ -24,6 +24,21 @@ module.exports = {
         poster: '2/3',
         backdrop: '16/9',
       },
+      animation: {
+        'fade-in': 'fade-in 300ms linear',
+      },
+      keyframes: {
+        'fade-in': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(10px)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
+        },
+      },
       colors: {
         primary: {
           50: '#EBE9FE',

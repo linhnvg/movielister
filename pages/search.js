@@ -2,7 +2,7 @@ import { tmdb } from '@lib/service'
 
 export default function Home({ data }) {
   return (
-    <div>
+    <div className="animate-fade-in">
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   )
