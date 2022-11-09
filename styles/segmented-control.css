@@ -1,5 +1,5 @@
 .segments {
-  @apply bg-black-20 inline-flex rounded-xl backdrop-blur-md p-2;
+  @apply bg-black-20 inline-flex items-center rounded-xl backdrop-blur-md p-2;
 }
 
 .segment input {
@@ -7,7 +7,7 @@
 }
 
 .segment label {
-  @apply inline-block px-8 py-2 text-gray-300 rounded-lg cursor-pointer transition;
+  @apply inline-block px-8 py-2 text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap;
 }
 
 .segment.active label {

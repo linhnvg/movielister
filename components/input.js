@@ -20,11 +20,7 @@ export function Input({ hasIcon, className, ...props }) {
 
 export function InputLabel({ children, className, ...props }) {
   return (
-    <label
-      htmlFor={htmlFor}
-      className={clsx('input-label', className)}
-      {...props}
-    >
+    <label className={clsx('input-label', className)} {...props}>
       {children}
     </label>
   )

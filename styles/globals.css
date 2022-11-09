@@ -8,24 +8,30 @@
   }
 
   .heading {
-    @apply font-bold text-2xl leading-10 tracking-tight;
+    @apply font-semibold text-2xl leading-10 tracking-tight;
   }
 
   .heading-lg {
-    @apply font-bold text-4xl leading-[56px] tracking-tight;
+    @apply font-semibold text-4xl leading-[56px] tracking-tight;
   }
 
   .heading-xl {
-    @apply font-bold text-6xl leading-[80px] tracking-tight;
+    @apply font-semibold text-6xl leading-[80px] tracking-tight;
   }
 
   .overline {
-    @apply font-bold uppercase text-sm leading-6 tracking-wider;
+    @apply font-semibold uppercase text-sm leading-6 tracking-wider;
   }
 
   .link {
     @apply font-bold text-grey-200 transition;
     @apply hover:text-grey-100;
+  }
+
+  .card-list {
+    @apply grid grid-cols-2 gap-6;
+    @apply lg:grid-cols-3;
+    @apply xl:grid-cols-4;
   }
 }
 
