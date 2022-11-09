@@ -15,11 +15,9 @@ module.exports = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1rem',
-          sm: '2rem',
-          lg: '4rem',
-          xl: '5rem',
-          '2xl': '6rem',
+          DEFAULT: '2.5rem',
+          sm: '5rem',
+          lg: '8rem',
         },
       },
       aspectRatio: {

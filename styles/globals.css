@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .container {
+    @apply max-w-[1440px];
+  }
+
   .heading {
     @apply font-bold text-2xl leading-10 tracking-tight;
   }
