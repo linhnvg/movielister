@@ -44,7 +44,7 @@ export default function Home({ data, type }) {
                 label: 'Home',
               },
               {
-                href: type === 'movie' ? 'movie' : type === 'tv' ? '/tv' : '#',
+                href: type === 'movie' ? '/movie' : type === 'tv' ? '/tv' : '#',
                 label:
                   type === 'movie'
                     ? 'Movies'
