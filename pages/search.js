@@ -33,36 +33,32 @@ export default function Home({ data, query }) {
 
         {query.query && (
           <div>
-            <div className="flex flex-col md:items-center md:flex-row">
-              <h2 className="heading text-gray-400 mr-6">Results</h2>
-
-              <SegmentedControl
-                className="my-6"
-                defaultIndex={
-                  query.type === 'collection' ? 2 : query.type === 'tv' ? 1 : 0
-                }
-                segments={[
-                  {
-                    label: 'Movies',
-                    value: '',
-                  },
-                  {
-                    label: 'TV Shows',
-                    value: 'tv',
-                  },
-                  {
-                    label: 'Collections',
-                    value: 'collection',
-                  },
-                ]}
-                callback={(val) =>
-                  router.replace({
-                    pathname: '/search',
-                    query: { ...router.query, type: val, page: 1 },
-                  })
-                }
-              />
-            </div>
+            <SegmentedControl
+              className="my-6"
+              defaultIndex={
+                query.type === 'collection' ? 2 : query.type === 'tv' ? 1 : 0
+              }
+              segments={[
+                {
+                  label: 'Movies',
+                  value: '',
+                },
+                {
+                  label: 'TV Shows',
+                  value: 'tv',
+                },
+                {
+                  label: 'Collections',
+                  value: 'collection',
+                },
+              ]}
+              callback={(val) =>
+                router.replace({
+                  pathname: '/search',
+                  query: { ...router.query, type: val, page: 1 },
+                })
+              }
+            />
 
             {data.results?.length ? (
               <div>

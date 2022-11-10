@@ -35,12 +35,12 @@
   }
 
   .button {
-    @apply inline-flex items-center py-4 px-8 rounded-xl cursor-pointer transition;
+    @apply inline-flex items-center py-3 px-5 rounded-xl cursor-pointer transition;
     @apply disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   .button-sm {
-    @apply py-3 px-5 text-sm;
+    @apply text-sm;
   }
 
   .button-primary {

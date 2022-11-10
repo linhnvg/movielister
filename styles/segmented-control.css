@@ -4,12 +4,13 @@
 }
 
 .segment input {
-  @apply appearance-none;
+  @apply appearance-none hidden;
 }
 
 .segment label {
-  @apply inline-block px-2 md:px-8 py-2 font-semibold text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap;
+  @apply inline-block px-4 py-2 font-semibold text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap;
   @apply hover:bg-black-30;
+  @apply md:px-8;
 }
 
 .segment.active label {

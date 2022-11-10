@@ -18,7 +18,7 @@ export default function Pagination({
       {...props}
     >
       <button
-        className="button button-primary flex-1 md:flex-grow-0"
+        className="button button-primary justify-around flex-1 md:flex-grow-0"
         aria-disabled="true"
         disabled={current === 1}
         onClick={() =>
@@ -30,7 +30,7 @@ export default function Pagination({
           })
         }
       >
-        <ArrowIcon className="rotate-180 mr-auto md:mr-4" />
+        <ArrowIcon className="rotate-180 md:mr-4" />
         Previous
       </button>
 
@@ -39,7 +39,7 @@ export default function Pagination({
       </span>
 
       <button
-        className="button button-primary flex-1 md:flex-grow-0"
+        className="button button-primary justify-around flex-1 md:flex-grow-0"
         aria-disabled="true"
         disabled={current >= total}
         onClick={() =>
@@ -52,7 +52,7 @@ export default function Pagination({
         }
       >
         Next
-        <ArrowIcon className="ml-auto md:ml-4" />
+        <ArrowIcon className="md:ml-4" />
       </button>
     </div>
   )
