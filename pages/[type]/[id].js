@@ -5,9 +5,8 @@ import Poster from '@components/poster'
 import Rating from '@components/rating'
 import Head from 'next/head'
 import Image from 'next/image'
-import Card from '@components/card'
-import Link from 'next/link'
 import Part from '@components/part'
+import Credits from '@components/credits'
 
 export default function Home({ data, type }) {
   return (
@@ -56,6 +55,8 @@ export default function Home({ data, type }) {
 
               {type === 'movie' && (
                 <div className="space-y-6">
+                  {data.credits?.crew && <Credits crew={data.credits.crew} />}
+
                   <p>
                     <span className="text-sm text-white-30">Type</span>
                     <span className="block mt-2">Movie</span>
@@ -98,6 +99,17 @@ export default function Home({ data, type }) {
 
               {type === 'tv' && (
                 <div className="grid grid-cols-2 gap-6">
+                  {data.created_by.length > 0 && (
+                    <p className="col-span-2">
+                      <span className="text-sm text-white-30">Creators</span>
+                      <span className="block mt-2">
+                        {data.created_by
+                          .map((person) => person.name)
+                          .join(', ')}
+                      </span>
+                    </p>
+                  )}
+
                   <p>
                     <span className="text-sm text-white-30">Type</span>
                     <span className="block mt-2">TV Show</span>
@@ -174,17 +186,6 @@ export default function Home({ data, type }) {
                       {data.genres.map((genre) => genre.name).join(', ')}
                     </span>
                   </p>
-
-                  {data.created_by.length > 0 && (
-                    <p className="col-span-2">
-                      <span className="text-sm text-white-30">Creators</span>
-                      <span className="block mt-2">
-                        {data.created_by
-                          .map((person) => person.name)
-                          .join(', ')}
-                      </span>
-                    </p>
-                  )}
                 </div>
               )}
             </div>
@@ -225,7 +226,11 @@ export default function Home({ data, type }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const response = await tmdb.get(`/${params.type}/${params.id}`)
+  const response = await tmdb.get(`/${params.type}/${params.id}`, {
+    params: {
+      append_to_response: 'credits',
+    },
+  })
 
   if (response.status === 404) {
     return {
