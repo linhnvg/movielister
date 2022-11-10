@@ -8,6 +8,7 @@ import SearchIcon from '@components/icons/search.svg'
 import SegmentedControl from '@components/segmented-control'
 import Card from '@components/card'
 import Pagination from '@components/pagination'
+import Breadcrumb from '@components/breadcrumb'
 
 export default function Home({ data, query }) {
   const router = useRouter()
@@ -27,6 +28,18 @@ export default function Home({ data, query }) {
 
       <div className="container pb-12 animate-fade-in">
         <div className="my-20 max-w-xl">
+          <Breadcrumb
+            pages={[
+              {
+                href: '/',
+                label: 'Home',
+              },
+              {
+                href: '/search',
+                label: 'Search',
+              },
+            ]}
+          />
           <h1 className="heading-xl mt-4">Search</h1>
           <Search />
         </div>

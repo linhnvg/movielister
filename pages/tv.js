@@ -7,6 +7,7 @@ import Navbar from '@components/navbar'
 import Search from '@components/search'
 import SegmentedControl from '@components/segmented-control'
 import Pagination from '@components/pagination'
+import Breadcrumb from '@components/breadcrumb'
 
 export default function TV({ data, query }) {
   const router = useRouter()
@@ -26,6 +27,18 @@ export default function TV({ data, query }) {
 
       <div className="container pb-12 animate-fade-in">
         <div className="my-20 max-w-xl">
+          <Breadcrumb
+            pages={[
+              {
+                href: '/',
+                label: 'Home',
+              },
+              {
+                href: '/tv',
+                label: 'TV Shows',
+              },
+            ]}
+          />
           <h1 className="heading-xl mt-4">TV Shows</h1>
 
           <Search />

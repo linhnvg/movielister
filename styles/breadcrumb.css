@@ -1,0 +1,4 @@
+.breadcrumb:not(:first-child)::before {
+  content: '›';
+  @apply inline-block mx-2 text-lg pointer-events-none;
+}

@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Part from '@components/part'
 import Credits from '@components/credits'
+import Breadcrumb from '@components/breadcrumb'
 
 export default function Home({ data, type }) {
   return (
@@ -36,6 +37,27 @@ export default function Home({ data, type }) {
           />
         </div>
         <div className="p-8 md:p-10 rounded-[40px] bg-grey-900 bg-opacity-80 backdrop-blur-md max-w-xl relative -top-16 lg:ml-20 -mb-16">
+          <Breadcrumb
+            pages={[
+              {
+                href: '/',
+                label: 'Home',
+              },
+              {
+                href: type === 'movie' ? 'movie' : type === 'tv' ? '/tv' : '#',
+                label:
+                  type === 'movie'
+                    ? 'Movies'
+                    : type === 'tv'
+                    ? 'TV Shows'
+                    : 'Collection',
+              },
+              {
+                href: '#',
+                label: data.title || data.name,
+              },
+            ]}
+          />
           <h1 className="heading-lg">{data.title || data.name}</h1>
         </div>
 
