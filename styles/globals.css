@@ -49,6 +49,13 @@
     @apply active:bg-primary-600;
     @apply disabled:hover:bg-primary-400;
   }
+
+  .button-trans {
+    @apply bg-black-20;
+    @apply hover:bg-black-30;
+    @apply active:bg-black-40;
+    @apply disabled:hover:bg-black-20;
+  }
 }
 
 body {
