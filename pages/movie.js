@@ -58,7 +58,7 @@ export default function Movie({ data, query }) {
           segments={[
             {
               label: 'Popular',
-              value: '',
+              value: 'popular',
             },
             {
               label: 'Now Playing',

@@ -27,12 +27,12 @@ export default function SegmentedControl({
             <input
               type="radio"
               value={item.value}
-              id={item.label}
+              id={item.value}
               name={name}
               onChange={() => onInputChange(item.value, i)}
               checked={i === activeIndex}
             />
-            <label htmlFor={item.label}>{item.label}</label>
+            <label htmlFor={item.value}>{item.label}</label>
           </div>
         ))}
       </div>

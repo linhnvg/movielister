@@ -41,7 +41,7 @@ export default function Home({ data, query }) {
           segments={[
             {
               label: 'All',
-              value: '',
+              value: 'all',
             },
             {
               label: 'Movies',

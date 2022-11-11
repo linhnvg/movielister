@@ -58,7 +58,7 @@ export default function TV({ data, query }) {
           segments={[
             {
               label: 'Popular',
-              value: '',
+              value: 'popular',
             },
             {
               label: 'Airing Today',
