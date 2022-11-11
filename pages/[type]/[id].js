@@ -10,6 +10,7 @@ import Credits from '@components/credits'
 import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 import Media from '@components/media'
+import Footer from '@components/footer'
 
 export default function Home({ data, type, backdropData, posterData }) {
   return (
@@ -266,6 +267,8 @@ export default function Home({ data, type, backdropData, posterData }) {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   )
 }
