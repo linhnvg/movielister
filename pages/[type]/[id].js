@@ -1,6 +1,7 @@
 import { tmdb } from '@lib/service'
 import { format, formatDuration, intervalToDuration } from 'date-fns'
 import { getPlaiceholder } from 'plaiceholder'
+import ArrowIcon from '@components/icons/arrow.svg'
 import Navbar from '@components/navbar'
 import Rating from '@components/rating'
 import Head from 'next/head'
@@ -11,6 +12,7 @@ import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 import Media from '@components/media'
 import Footer from '@components/footer'
+import Link from 'next/link'
 
 export default function Home({ data, type, backdropData, posterData }) {
   return (
@@ -234,6 +236,29 @@ export default function Home({ data, type, backdropData, posterData }) {
                 posters={data.images?.posters}
                 backdrops={data.images?.backdrops}
               />
+            )}
+
+            {data.belongs_to_collection && (
+              <Link
+                href={`/collection/${data.belongs_to_collection.id}`}
+                style={{
+                  backgroundImage: `url(https://image.tmdb.org/t/p/w1280${data.belongs_to_collection.backdrop_path})`,
+                }}
+                className="relative bg-cover h-96 rounded-xl flex flex-col justify-center px-16 my-8"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-black-75 to-transparent rounded-xl" />
+                <div className="relative">
+                  <span className="text-xl block text-white-65">
+                    Part of a collection
+                  </span>
+                  <strong className="heading-lg">
+                    Explore {data.belongs_to_collection.name}
+                  </strong>
+                  <button className="flex button button-primary mt-8">
+                    Details <ArrowIcon className="ml-4" />
+                  </button>
+                </div>
+              </Link>
             )}
           </div>
         )}
