@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import Error from 'next/error'
 import '../styles/globals.css'
 import '@fontsource/poppins/400.css'
@@ -13,7 +14,12 @@ function MyApp({ Component, pageProps }) {
       />
     )
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  )
 }
 
 export default MyApp
