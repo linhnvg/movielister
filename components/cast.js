@@ -24,8 +24,9 @@ export default function Cast({ cast }) {
                   : '/placeholder.svg'
               }
               alt={person.name}
-              className="object-cover object-center rounded-full border-4 border-black-10"
-              fill
+              className="object-cover object-center rounded-full h-16 border-4 border-black-10"
+              width={185}
+              height={185}
             />
           </div>
           <div className="text-xs ml-4">

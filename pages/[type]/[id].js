@@ -1,7 +1,7 @@
 import { tmdb } from '@lib/service'
 import { format, formatDuration, intervalToDuration } from 'date-fns'
+import { getPlaiceholder } from 'plaiceholder'
 import Navbar from '@components/navbar'
-import Poster from '@components/poster'
 import Rating from '@components/rating'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -10,7 +10,8 @@ import Credits from '@components/credits'
 import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 
-export default function Home({ data, type }) {
+export default function Home({ data, type, backdropData, posterData }) {
+  console.log(data.backdrop_path)
   return (
     <div>
       <Head>
@@ -25,16 +26,15 @@ export default function Home({ data, type }) {
       <Navbar />
 
       <div className="container pb-12 animate-fade-in mt-10">
-        <div className="h-96 md:h-[480px] w-full relative">
+        <div className="w-full relative">
           <Image
-            src={
-              data.backdrop_path
-                ? `https://image.tmdb.org/t/p/w1280${data.backdrop_path}`
-                : '/placeholder.svg'
-            }
+            src={backdropData.img.src}
             alt={data.title || data.name}
-            className="object-cover object-center rounded-[40px]"
-            fill
+            blurDataURL={backdropData.base64}
+            className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
+            placeholder="blur"
+            width={1600}
+            height={900}
           />
         </div>
         <div className="p-8 md:p-10 rounded-[40px] bg-grey-900 bg-opacity-80 backdrop-blur-md max-w-xl relative -top-16 lg:ml-20 -mb-16">
@@ -68,11 +68,17 @@ export default function Home({ data, type }) {
 
             <div className="flex flex-col-reverse my-5 gap-12 md:gap-20 lg:flex-row">
               <div className="lg:w-1/2">
-                <Poster
-                  path={data.poster_path}
-                  alt={data.title || data.name}
-                  size="w780"
-                />
+                <div className="aspect-poster">
+                  <Image
+                    src={posterData.img.src}
+                    alt={data.title || data.name}
+                    className="rounded-[40px] object-cover w-full"
+                    placeholder="blur"
+                    blurDataURL={posterData.base64}
+                    width={480}
+                    height={710}
+                  />
+                </div>
               </div>
               <div className="lg:w-1/2 space-y-6">
                 <h2 className="heading">{data.tagline || 'Overview'}</h2>
@@ -279,10 +285,24 @@ export async function getServerSideProps({ params }) {
     }
   }
 
+  const backdropPath = response.data.backdrop_path
+    ? `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
+    : '/placeholder.svg'
+  const backdropData = await getPlaiceholder(backdropPath, {
+    size: 10,
+  })
+
+  const posterPath = response.data.poster_path
+    ? `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
+    : '/placeholder.svg'
+  const posterData = await getPlaiceholder(posterPath)
+
   return {
     props: {
       type: params.type,
       data: response.data,
+      backdropData,
+      posterData,
     },
   }
 }
