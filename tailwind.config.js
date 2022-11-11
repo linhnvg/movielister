@@ -30,7 +30,7 @@ module.exports = {
       keyframes: {
         'fade-in': {
           from: {
-            opacity: 0,
+            opacity: 0.1,
             transform: 'translateY(10px)',
           },
           to: {

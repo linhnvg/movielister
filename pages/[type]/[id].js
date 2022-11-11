@@ -24,7 +24,7 @@ export default function Home({ data, type, backdropData, posterData }) {
 
       <Navbar />
 
-      <div className="container pb-12 animate-fade-in mt-10">
+      <div className="container pb-12 mt-10">
         <div className="w-full relative">
           <Image
             src={backdropData.img.src}
@@ -32,6 +32,7 @@ export default function Home({ data, type, backdropData, posterData }) {
             blurDataURL={backdropData.base64}
             className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
             placeholder="blur"
+            loading="eager"
             width={1600}
             height={900}
           />
