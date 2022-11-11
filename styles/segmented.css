@@ -8,6 +8,6 @@
 }
 
 .segment label {
-  @apply inline-block px-4 py-2 font-semibold text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap;
+  @apply inline-block px-4 py-2 font-semibold text-center text-gray-300 rounded-lg cursor-pointer transition whitespace-nowrap select-none;
   @apply md:px-8;
 }
