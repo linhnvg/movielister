@@ -11,7 +11,6 @@ import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 
 export default function Home({ data, type, backdropData, posterData }) {
-  console.log(data.backdrop_path)
   return (
     <div>
       <Head>
