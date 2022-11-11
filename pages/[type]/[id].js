@@ -9,6 +9,7 @@ import Part from '@components/part'
 import Credits from '@components/credits'
 import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
+import Media from '@components/media'
 
 export default function Home({ data, type, backdropData, posterData }) {
   return (
@@ -64,7 +65,7 @@ export default function Home({ data, type, backdropData, posterData }) {
 
         {(type === 'movie' || type === 'tv') && (
           <div className="mt-8 md:m-12 md:mt-8 xl:m-20 xl:mt-8">
-            {data.credits.cast.length > 0 && <Cast cast={data.credits.cast} />}
+            {data.credits?.cast.length > 0 && <Cast cast={data.credits.cast} />}
 
             <div className="flex flex-col-reverse my-5 gap-12 md:gap-20 lg:flex-row">
               <div className="lg:w-1/2">
@@ -225,6 +226,14 @@ export default function Home({ data, type, backdropData, posterData }) {
                 )}
               </div>
             </div>
+
+            {(data.videos || data.images) && (
+              <Media
+                videos={data.videos?.results}
+                posters={data.images?.posters}
+                backdrops={data.images?.backdrops}
+              />
+            )}
           </div>
         )}
 
@@ -264,7 +273,7 @@ export default function Home({ data, type, backdropData, posterData }) {
 export async function getServerSideProps({ params }) {
   const response = await tmdb.get(`/${params.type}/${params.id}`, {
     params: {
-      append_to_response: 'credits',
+      append_to_response: 'credits,videos,images',
     },
   })
 
