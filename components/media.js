@@ -90,16 +90,17 @@ function Videos({ videos }) {
         scrollClass
       )}
     >
-      {videos
-        .sort((a) => a.type === 'Trailer' && -1)
-        .map((video) => (
-          <Video
-            key={video.id}
-            id={video.key}
-            name={video.name}
-            className="aspect-[4/3] h-96 relative"
-          />
-        ))}
+      {[
+        ...videos.filter((video) => video.type === 'Trailer'),
+        ...videos.filter((video) => video.type !== 'Trailer'),
+      ].map((video) => (
+        <Video
+          key={video.id}
+          id={video.key}
+          name={video.name}
+          className="aspect-[4/3] h-96 relative"
+        />
+      ))}
     </div>
   )
 }
