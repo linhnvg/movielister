@@ -59,6 +59,51 @@ body {
   background-repeat: repeat-y;
 }
 
+.scroll-section::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+.scroll-section::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+.scroll-section::-webkit-scrollbar-thumb {
+  @apply shadow-sm bg-grey-400 rounded-lg;
+}
+.scroll-section::-webkit-scrollbar-thumb:active {
+  @apply bg-grey-500;
+}
+
+.scroll-fade {
+  mask-image: linear-gradient(
+    to right,
+    black,
+    black 50%,
+    black 75%,
+    transparent 100%
+  );
+}
+
+.scroll-fade-active {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 25%,
+    black 50%,
+    black 75%,
+    transparent 100%
+  );
+}
+
+.scroll-fade-passive {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 25%,
+    black 50%,
+    black 75%,
+    black 100%
+  );
+}
+
 @import './input';
 @import './navbar';
 @import './card';
