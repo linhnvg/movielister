@@ -12,7 +12,11 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
-    ref.current?.focus()
+    if (searchOpen) {
+      ref.current?.focus()
+    } else {
+      ref.current?.blur()
+    }
   }, [searchOpen])
 
   return (
@@ -45,7 +49,7 @@ export default function Navbar() {
           )}
 
           <Modal isOpen={searchOpen} setIsOpen={setSearchOpen}>
-            <div className="bg-gray-900 rounded-xl w-80">
+            <div className="bg-gray-900 rounded-xl w-80 -mt-[10vw]">
               <Search forwardedRef={ref} />
             </div>
           </Modal>
