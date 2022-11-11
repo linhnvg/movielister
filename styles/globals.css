@@ -114,5 +114,5 @@ body {
 @import './input';
 @import './navbar';
 @import './card';
-@import './segmented-control';
+@import './segmented';
 @import './breadcrumb';

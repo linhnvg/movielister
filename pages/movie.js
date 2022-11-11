@@ -5,7 +5,7 @@ import Card from '@components/card'
 import Footer from '@components/footer'
 import Navbar from '@components/navbar'
 import Search from '@components/search'
-import SegmentedControl from '@components/segmented-control'
+import Segmented from '@components/segmented'
 import Pagination from '@components/pagination'
 import Breadcrumb from '@components/breadcrumb'
 
@@ -44,7 +44,8 @@ export default function Movie({ data, query }) {
           <Search />
         </div>
 
-        <SegmentedControl
+        <Segmented
+          name="movie"
           className="my-6"
           defaultIndex={
             query?.tab === 'top_rated'

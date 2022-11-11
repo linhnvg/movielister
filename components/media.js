@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useScrollFade } from '@lib/hooks'
 import clsx from 'clsx'
 import Image from 'next/image'
-import SegmentedControl from './segmented-control'
+import Segmented from './segmented'
 import Video from './video'
 import Poster from './poster'
 import MarkIcon from './icons/mark.svg'
@@ -13,7 +13,7 @@ export default function Media({ videos, posters, backdrops }) {
   return (
     <div>
       <strong className="heading block mb-2">Media</strong>
-      <SegmentedControl
+      <Segmented
         callback={(val) => setTab(val)}
         segments={[
           {
@@ -29,6 +29,7 @@ export default function Media({ videos, posters, backdrops }) {
             label: <Label label="Backdrops" count={backdrops.length} />,
           },
         ]}
+        name="media"
       />
       <div>
         {tab === 'videos' && (

@@ -5,7 +5,7 @@ import Navbar from '@components/navbar'
 import Footer from '@components/footer'
 import Search from '@components/search'
 import SearchIcon from '@components/icons/search.svg'
-import SegmentedControl from '@components/segmented-control'
+import Segmented from '@components/segmented'
 import Card from '@components/card'
 import Pagination from '@components/pagination'
 import Breadcrumb from '@components/breadcrumb'
@@ -46,7 +46,8 @@ export default function Home({ data, query }) {
 
         {query.query && (
           <div>
-            <SegmentedControl
+            <Segmented
+              name="search"
               className="my-6"
               defaultIndex={
                 query.type === 'collection' ? 2 : query.type === 'tv' ? 1 : 0

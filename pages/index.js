@@ -2,7 +2,7 @@ import { tmdb } from '@lib/service'
 import { useRouter } from 'next/router'
 import Card from '@components/card'
 import Navbar from '@components/navbar'
-import SegmentedControl from '@components/segmented-control'
+import Segmented from '@components/segmented'
 import Head from 'next/head'
 import Footer from '@components/footer'
 import Search from '@components/search'
@@ -35,8 +35,9 @@ export default function Home({ data, query }) {
           <Search />
         </div>
 
-        <SegmentedControl
+        <Segmented
           className="my-6"
+          name="home"
           defaultIndex={query.tab === 'tv' ? 2 : query.tab === 'movie' ? 1 : 0}
           segments={[
             {
