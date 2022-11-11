@@ -5,7 +5,7 @@ import SearchIcon from '@components/icons/search.svg'
 import TimesIcon from '@components/icons/times.svg'
 import clsx from 'clsx'
 
-export default function Search() {
+export default function Search({ forwardedRef }) {
   const ref = useRef(null)
   const router = useRouter()
   const [value, setValue] = useState(router.query.query || '')
@@ -31,7 +31,7 @@ export default function Search() {
           placeholder="eg. avengers"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          forwardedRef={ref}
+          forwardedRef={forwardedRef || ref}
           hasIcon
           required
         />
