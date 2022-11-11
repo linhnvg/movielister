@@ -18,7 +18,7 @@ export default function TV({ data, query }) {
         <title>TV Shows &mdash; Movielister</title>
         <meta
           name="description"
-          content="Movielist, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"
+          content="Movielister, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"
         />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
