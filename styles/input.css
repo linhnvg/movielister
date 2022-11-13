@@ -28,3 +28,9 @@
 .input-icon {
   @apply absolute top-1/2 left-7 -translate-y-1/2 -translate-x-1/2;
 }
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
