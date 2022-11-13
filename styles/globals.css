@@ -58,6 +58,67 @@
   }
 }
 
+@layer utilities {
+  .masked-overflow-y {
+    --scrollbar-width: 8px;
+    --mask-height: 64px;
+    padding-bottom: var(--mask-height);
+    padding-right: 20px;
+    --mask-image-content: linear-gradient(
+      to bottom,
+      black var(--mask-height),
+      black calc(100% - var(--mask-height)),
+      transparent
+    );
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+    --mask-image-scrollbar: linear-gradient(black, black);
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    mask-position: 0 0, 100% 0;
+    mask-repeat: no-repeat, no-repeat;
+  }
+
+  .masked-overflow-x {
+    --scrollbar-width: 8px;
+    --mask-width: 32px;
+    padding-right: 0;
+    padding-bottom: 20px;
+    --mask-image-content: linear-gradient(
+      to right,
+      black calc(var(--mask-width)),
+      black calc(100% - var(--mask-width)),
+      transparent
+    );
+    --mask-size-content: 100% calc(100% - var(--scrollbar-width));
+    --mask-image-scrollbar: linear-gradient(black, black);
+    --mask-size-scrollbar: 100% var(--scrollbar-width);
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+    mask-position: 0 0, 0 100%;
+    mask-repeat: no-repeat, no-repeat;
+  }
+
+  .masked-overflow-x-both {
+    --mask-image-content: linear-gradient(
+      to right,
+      transparent,
+      black calc(var(--mask-width)),
+      black calc(100% - var(--mask-width)),
+      transparent
+    );
+  }
+
+  .masked-overflow-x-end {
+    --mask-image-content: linear-gradient(
+      to right,
+      transparent,
+      black calc(var(--mask-width)),
+      black calc(100% - var(--mask-width))
+    );
+  }
+}
+
 body {
   @apply bg-grey-900 text-grey-50;
   background-image: url('/bg.png');
@@ -80,65 +141,6 @@ body {
 }
 .scroll-section::-webkit-scrollbar-thumb:active {
   @apply bg-grey-500;
-}
-
-.masked-overflow-y {
-  --scrollbar-width: 8px;
-  --mask-height: 64px;
-  padding-bottom: var(--mask-height);
-  padding-right: 20px;
-  --mask-image-content: linear-gradient(
-    to bottom,
-    black var(--mask-height),
-    black calc(100% - var(--mask-height)),
-    transparent
-  );
-  --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
-  --mask-image-scrollbar: linear-gradient(black, black);
-  --mask-size-scrollbar: var(--scrollbar-width) 100%;
-  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
-  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
-  mask-position: 0 0, 100% 0;
-  mask-repeat: no-repeat, no-repeat;
-}
-
-.masked-overflow-x {
-  --scrollbar-width: 8px;
-  --mask-width: 32px;
-  padding-right: 0;
-  padding-bottom: 20px;
-  --mask-image-content: linear-gradient(
-    to right,
-    black calc(var(--mask-width)),
-    black calc(100% - var(--mask-width)),
-    transparent
-  );
-  --mask-size-content: 100% calc(100% - var(--scrollbar-width));
-  --mask-image-scrollbar: linear-gradient(black, black);
-  --mask-size-scrollbar: 100% var(--scrollbar-width);
-  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
-  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
-  mask-position: 0 0, 0 100%;
-  mask-repeat: no-repeat, no-repeat;
-}
-
-.masked-overflow-x-both {
-  --mask-image-content: linear-gradient(
-    to right,
-    transparent,
-    black calc(var(--mask-width)),
-    black calc(100% - var(--mask-width)),
-    transparent
-  );
-}
-
-.masked-overflow-x-end {
-  --mask-image-content: linear-gradient(
-    to right,
-    transparent,
-    black calc(var(--mask-width)),
-    black calc(100% - var(--mask-width))
-  );
 }
 
 @import './input';
