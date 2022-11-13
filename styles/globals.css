@@ -73,41 +73,71 @@ body {
   @apply bg-transparent;
 }
 .scroll-section::-webkit-scrollbar-thumb {
-  @apply shadow-sm bg-grey-400 rounded-lg;
+  @apply shadow-sm bg-transparent rounded-lg transition;
+}
+.scroll-section:hover::-webkit-scrollbar-thumb {
+  @apply bg-grey-400;
 }
 .scroll-section::-webkit-scrollbar-thumb:active {
   @apply bg-grey-500;
 }
 
-.scroll-fade {
-  mask-image: linear-gradient(
+.masked-overflow-y {
+  --scrollbar-width: 8px;
+  --mask-height: 64px;
+  padding-bottom: var(--mask-height);
+  padding-right: 20px;
+  --mask-image-content: linear-gradient(
+    to bottom,
+    black var(--mask-height),
+    black calc(100% - var(--mask-height)),
+    transparent
+  );
+  --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+  --mask-image-scrollbar: linear-gradient(black, black);
+  --mask-size-scrollbar: var(--scrollbar-width) 100%;
+  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+  mask-position: 0 0, 100% 0;
+  mask-repeat: no-repeat, no-repeat;
+}
+
+.masked-overflow-x {
+  --scrollbar-width: 8px;
+  --mask-width: 32px;
+  padding-right: 0;
+  padding-bottom: 20px;
+  --mask-image-content: linear-gradient(
     to right,
-    black,
-    black 50%,
-    black 75%,
-    transparent 100%
+    black calc(var(--mask-width)),
+    black calc(100% - var(--mask-width)),
+    transparent
+  );
+  --mask-size-content: 100% calc(100% - var(--scrollbar-width));
+  --mask-image-scrollbar: linear-gradient(black, black);
+  --mask-size-scrollbar: 100% var(--scrollbar-width);
+  mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+  mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+  mask-position: 0 0, 0 100%;
+  mask-repeat: no-repeat, no-repeat;
+}
+
+.masked-overflow-x-both {
+  --mask-image-content: linear-gradient(
+    to right,
+    transparent,
+    black calc(var(--mask-width)),
+    black calc(100% - var(--mask-width)),
+    transparent
   );
 }
 
-.scroll-fade-active {
-  mask-image: linear-gradient(
+.masked-overflow-x-end {
+  --mask-image-content: linear-gradient(
     to right,
     transparent,
-    black 25%,
-    black 50%,
-    black 75%,
-    transparent 100%
-  );
-}
-
-.scroll-fade-passive {
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 25%,
-    black 50%,
-    black 75%,
-    black 100%
+    black calc(var(--mask-width)),
+    black calc(100% - var(--mask-width))
   );
 }
 
@@ -116,3 +146,4 @@ body {
 @import './card';
 @import './segmented';
 @import './breadcrumb';
+@import './slider';
