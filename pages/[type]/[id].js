@@ -35,7 +35,7 @@ export default function Home({ data, type, backdropData, posterData }) {
             alt={data.title || data.name}
             blurDataURL={backdropData.base64}
             className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
-            placeholder="blur"
+            placeholder={backdropData.base64 ? 'blur' : 'empty'}
             loading="eager"
             width={1600}
             height={900}
@@ -76,8 +76,8 @@ export default function Home({ data, type, backdropData, posterData }) {
                   <Image
                     src={posterData.img.src}
                     alt={data.title || data.name}
-                    className="rounded-[40px] object-cover w-full"
-                    placeholder="blur"
+                    className="rounded-[40px] object-cover w-full h-full"
+                    placeholder={posterData.base64 ? 'blur' : 'empty'}
                     blurDataURL={posterData.base64}
                     width={480}
                     height={710}
@@ -322,17 +322,25 @@ export async function getServerSideProps({ params }) {
     }
   }
 
-  const backdropPath = response.data.backdrop_path
-    ? `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
-    : '/placeholder.svg'
-  const backdropData = await getPlaiceholder(backdropPath, {
-    size: 10,
-  })
+  const backdropData = response.data.backdrop_path
+    ? await getPlaiceholder(
+        `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
+      )
+    : {
+        img: {
+          src: '/placeholder.svg',
+        },
+      }
 
-  const posterPath = response.data.poster_path
-    ? `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
-    : '/placeholder.svg'
-  const posterData = await getPlaiceholder(posterPath)
+  const posterData = response.data.poster_path
+    ? await getPlaiceholder(
+        `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
+      )
+    : {
+        img: {
+          src: '/placeholder.svg',
+        },
+      }
 
   return {
     props: {
