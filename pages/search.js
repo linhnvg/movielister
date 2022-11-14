@@ -50,7 +50,13 @@ export default function Home({ data, query }) {
               name="search"
               className="my-6"
               defaultIndex={
-                query.type === 'collection' ? 2 : query.type === 'tv' ? 1 : 0
+                query.type === 'person'
+                  ? 3
+                  : query.type === 'collection'
+                  ? 2
+                  : query.type === 'tv'
+                  ? 1
+                  : 0
               }
               segments={[
                 {
@@ -64,6 +70,10 @@ export default function Home({ data, query }) {
                 {
                   label: 'Collections',
                   value: 'collection',
+                },
+                {
+                  label: 'Persons',
+                  value: 'person',
                 },
               ]}
               callback={(val) =>
@@ -81,7 +91,7 @@ export default function Home({ data, query }) {
                     <Card
                       key={result.id}
                       id={result.id}
-                      image={result.poster_path}
+                      image={result.poster_path || result.profile_path}
                       title={result.title || result.name}
                       type={query.type || 'movie'}
                       rating={result.vote_average}

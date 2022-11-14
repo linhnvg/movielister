@@ -5,6 +5,7 @@ import Logo from './logo'
 import Modal from './modal'
 import Search from './search'
 import SearchIcon from './icons/search.svg'
+import clsx from 'clsx'
 
 export default function Navbar() {
   const ref = useRef(null)
@@ -28,10 +29,22 @@ export default function Navbar() {
         </Link>
 
         <nav className="ml-auto flex items-center">
-          <Link href="/movie" className="nav-link">
+          <Link
+            href="/movie"
+            className={clsx(
+              'nav-link',
+              router.pathname === '/movie' && 'text-white-100'
+            )}
+          >
             Movies
           </Link>
-          <Link href="/tv" className="nav-link">
+          <Link
+            href="/tv"
+            className={clsx(
+              'nav-link',
+              router.pathname === '/tv' && 'text-white-100'
+            )}
+          >
             TV Shows
           </Link>
 

@@ -13,8 +13,15 @@ import Cast from '@components/cast'
 import Media from '@components/media'
 import Footer from '@components/footer'
 import Link from 'next/link'
+import clsx from 'clsx'
 
-export default function Home({ data, type, backdropData, posterData }) {
+export default function Home({
+  data,
+  type,
+  backdropData,
+  posterData,
+  profileData,
+}) {
   return (
     <div>
       <Head>
@@ -29,19 +36,26 @@ export default function Home({ data, type, backdropData, posterData }) {
       <Navbar />
 
       <div className="container pb-12 mt-10">
-        <div className="w-full relative">
-          <Image
-            src={backdropData.img.src}
-            alt={data.title || data.name}
-            blurDataURL={backdropData.base64}
-            className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
-            placeholder={backdropData.base64 ? 'blur' : 'empty'}
-            loading="eager"
-            width={1600}
-            height={900}
-          />
-        </div>
-        <div className="p-8 md:p-10 rounded-[40px] bg-grey-900 bg-opacity-80 backdrop-blur-md max-w-xl relative -top-16 lg:ml-20 -mb-16">
+        {type !== 'person' && (
+          <div className="w-full relative">
+            <Image
+              src={backdropData.img.src}
+              alt={data.title || data.name}
+              blurDataURL={backdropData.base64}
+              className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
+              placeholder={backdropData.base64 ? 'blur' : 'empty'}
+              loading="eager"
+              width={1600}
+              height={900}
+            />
+          </div>
+        )}
+        <div
+          className={clsx(
+            'p-8 md:p-10 rounded-[40px] bg-grey-900 bg-opacity-80 backdrop-blur-md max-w-xl relative',
+            type !== 'person' && '-top-16 lg:ml-20 -mb-16'
+          )}
+        >
           <Breadcrumb
             pages={[
               {
@@ -55,6 +69,8 @@ export default function Home({ data, type, backdropData, posterData }) {
                     ? 'Movies'
                     : type === 'tv'
                     ? 'TV Shows'
+                    : type === 'person'
+                    ? 'Person'
                     : 'Collection',
               },
               {
@@ -244,7 +260,7 @@ export default function Home({ data, type, backdropData, posterData }) {
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/w1280${data.belongs_to_collection.backdrop_path})`,
                 }}
-                className="relative bg-cover h-96 rounded-xl flex flex-col justify-center px-16 my-8"
+                className="relative bg-cover h-96 rounded-xl flex flex-col justify-center px-8 md:px-16 my-8"
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-black-75 to-transparent rounded-xl" />
                 <div className="relative">
@@ -287,6 +303,76 @@ export default function Home({ data, type, backdropData, posterData }) {
                     date={part.release_date}
                   />
                 ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {type === 'person' && (
+          <div
+            className={clsx(
+              'flex my-5 gap-12 md:gap-20 lg:flex-row',
+              type === 'person' ? 'flex-col' : 'flex-col-reverse'
+            )}
+          >
+            <div className="lg:w-1/2">
+              <div className="aspect-poster">
+                <Image
+                  src={profileData.img.src}
+                  alt={data.name}
+                  className="rounded-[40px] object-cover w-full h-full"
+                  placeholder={profileData.base64 ? 'blur' : 'empty'}
+                  blurDataURL={profileData.base64}
+                  width={480}
+                  height={710}
+                />
+              </div>
+            </div>
+
+            <div className="lg:w-1/2 space-y-6">
+              {data.biography && (
+                <div>
+                  <h2 className="heading">Biography</h2>
+                  <p className="text-white-65">{data.biography}</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 gap-6">
+                {data.known_for_department && (
+                  <p>
+                    <span className="text-sm text-white-30">Known for</span>
+                    <span className="block mt-2">
+                      {data.known_for_department}
+                    </span>
+                  </p>
+                )}
+
+                {data.birthday && (
+                  <p>
+                    <span className="text-sm text-white-30">Birthday</span>
+                    <span className="block mt-2">
+                      {format(new Date(data.birthday), 'dd MMMM, yyyy')}
+                    </span>
+                  </p>
+                )}
+
+                {data.place_of_birth && (
+                  <p>
+                    <span className="text-sm text-white-30">
+                      Place of Birth
+                    </span>
+                    <span className="block mt-2">{data.place_of_birth}</span>
+                  </p>
+                )}
+
+                {data.also_known_as.length > 0 && (
+                  <p>
+                    <span className="text-sm text-white-30">Also known as</span>
+                    <span className="block mt-2">
+                      {data.also_known_as.join(', ')}
+                    </span>
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -342,12 +428,22 @@ export async function getServerSideProps({ params }) {
         },
       }
 
+  const profileData = response.data.profile_path
+    ? await getPlaiceholder(
+        `https://image.tmdb.org/t/p/original${response.data.profile_path}`
+      )
+    : {
+        img: {
+          src: '/placeholder.svg',
+        },
+      }
   return {
     props: {
       type: params.type,
       data: response.data,
       backdropData,
       posterData,
+      profileData,
     },
   }
 }
