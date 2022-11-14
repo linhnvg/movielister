@@ -1,4 +1,5 @@
 import groupBy from 'lodash.groupby'
+import Link from 'next/link'
 
 export default function Credits({ crew }) {
   const jobs = ['Director', 'Characters', 'Screenplay', 'Writer', 'Story']
@@ -27,10 +28,10 @@ export default function Credits({ crew }) {
         ...credits.filter((c) => c.jobs.includes('Director')),
         ...credits.filter((c) => !c.jobs.includes('Director')),
       ].map((person) => (
-        <div key={person.id}>
+        <Link href={`/person/${person.id}`} key={person.id}>
           <strong className="font-semibold">{person.name}</strong>
           <p className="text-white-65">{person.jobs.join(', ')}</p>
-        </div>
+        </Link>
       ))}
     </div>
   )

@@ -154,10 +154,12 @@ export default function Home({
                     {data.created_by.length > 0 && (
                       <p className="col-span-2">
                         <span className="text-sm text-white-30">Creators</span>
-                        <span className="block mt-2">
-                          {data.created_by
-                            .map((person) => person.name)
-                            .join(', ')}
+                        <span className="mt-2 grid grid-cols-2 gap-6">
+                          {data.created_by.map((person) => (
+                            <Link href={`/person/${person.id}`} key={person.id}>
+                              {person.name}
+                            </Link>
+                          ))}
                         </span>
                       </p>
                     )}
