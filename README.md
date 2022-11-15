@@ -4,11 +4,11 @@ Another TMDB clone with Next.js
 
 ## Description
 
-This project made with Next JS, uses Tailwind CSS for style. It's kind a [The Movie DB](https://www.themoviedb.org/) clone with a different UI. It has movie, tv show listing, detail pages and search system all powered by TMDB API.
+This project made with Next JS, uses Tailwind CSS for style and Framer Motion for animations. It's kind a [The Movie DB](https://www.themoviedb.org/) clone with a different UI. It has movie, tv show listing, detail pages and search system all powered by TMDB API.
 
 ## Installation
 
-You must provide a API key to use this project. You can see the [.env.local.example](./.env.local.example) file.
+You must provide an API key to use this project. You can see the [.env.local.example](./.env.local.example) file.
 
 ```
 cp .env.local.example .env.local
