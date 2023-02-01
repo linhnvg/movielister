@@ -294,17 +294,23 @@ export default function Home({
               <h3 className="heading mb-4">Parts</h3>
 
               <div className="space-y-6">
-                {data.parts.map((part) => (
-                  <Part
-                    key={part.id}
-                    id={part.id}
-                    title={part.title}
-                    poster={part.poster_path}
-                    overview={part.overview}
-                    rating={part.vote_average}
-                    date={part.release_date}
-                  />
-                ))}
+                {data.parts
+                  .sort((a, b) =>
+                    a.release_date && b.release_date
+                      ? new Date(a.release_date) - new Date(b.release_date)
+                      : false
+                  )
+                  .map((part) => (
+                    <Part
+                      key={part.id}
+                      id={part.id}
+                      title={part.title}
+                      poster={part.poster_path}
+                      overview={part.overview}
+                      rating={part.vote_average}
+                      date={part.release_date}
+                    />
+                  ))}
               </div>
             </div>
           </div>
