@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Image from 'next/image'
 import PlayIcon from './icons/play.svg'
 import Modal from './modal'
 
@@ -8,7 +7,7 @@ export default function Video({ id, name, ...props }) {
 
   return (
     <div {...props}>
-      <Image
+      <img
         src={`https://img.youtube.com/vi/${id}/0.jpg`}
         alt={name}
         width={384}

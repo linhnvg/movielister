@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useScrollFade } from '@lib/hooks'
 import clsx from 'clsx'
-import Image from 'next/image'
 import Segmented from './segmented'
 import Video from './video'
 import Poster from './poster'
@@ -123,7 +122,7 @@ function Backdrops({ backdrops }) {
       >
         {backdrops.map((backdrop, index) => (
           <div key={backdrop.id} className="aspect-video h-96">
-            <Image
+            <img
               className="w-full h-full rounded-xl"
               src={`https://image.tmdb.org/t/p/w780${backdrop.file_path}`}
               width={780}

@@ -1,6 +1,5 @@
 import { useScrollFade } from '@lib/hooks'
 import clsx from 'clsx'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Cast({ cast }) {
@@ -19,7 +18,7 @@ export default function Cast({ cast }) {
         <Link key={person.id} href={`/person/${person.id}`}>
           <div className="flex items-center">
             <div className="aspect-square relative w-16 shrink-0">
-              <Image
+              <img
                 src={
                   person.profile_path
                     ? `https://image.tmdb.org/t/p/w185${person.profile_path}`

@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import Image from 'next/image'
 
 export default function Poster({ path, alt, size, className, ...props }) {
   const src = path
@@ -8,7 +7,7 @@ export default function Poster({ path, alt, size, className, ...props }) {
 
   return (
     <div className={clsx('aspect-poster relative', className)} {...props}>
-      <Image src={src} alt={alt} className="rounded-xl object-cover" fill />
+      <img src={src} alt={alt} className="rounded-xl object-cover" fill />
     </div>
   )
 }
