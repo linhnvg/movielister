@@ -8,15 +8,26 @@ export default function Footer() {
         <Logo className="text-4xl mx-auto" />
         <p className="text-center max-w-lg mx-auto mt-8 text-grey-400">
           &copy; 2022 Movielister created by{' '}
-          <a href="https://oktaycolakoglu.com" target="_blank" rel="noreferrer">
-            Oktay Colakoglu
+          <a
+            className="link"
+            href="https://oktaycolakoglu.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Oktay Çolakoğlu
           </a>{' '}
           with{' '}
-          <a href="https://nextjs.org" target="_blank" rel="noreferrer">
+          <a
+            className="link"
+            href="https://nextjs.org"
+            target="_blank"
+            rel="noreferrer"
+          >
             Next.js
           </a>{' '}
           powered by{' '}
           <a
+            className="link"
             href="https://www.themoviedb.org/"
             target="_blank"
             rel="noreferrer"
@@ -38,10 +49,19 @@ export default function Footer() {
           >
             Pramod Poudel.
           </a>{' '}
-          source code shared on <a href="#">Github</a>.
+          source code shared on{' '}
+          <a className="link" href="#">
+            Github
+          </a>
+          .
         </p>
 
-        <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
+        <a
+          className="link"
+          href="https://www.themoviedb.org/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <TMDB className="mx-auto mt-8 w-14" />
         </a>
       </div>

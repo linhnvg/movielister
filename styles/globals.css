@@ -35,7 +35,7 @@
   }
 
   .button {
-    @apply inline-flex items-center py-3 px-5 rounded-xl cursor-pointer transition;
+    @apply inline-flex items-center py-3 px-5 rounded-xl cursor-pointer font-semibold transition;
     @apply disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
