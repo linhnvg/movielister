@@ -6,7 +6,10 @@ export default function Gallery({ isOpen, setIsOpen, images, options }) {
     <PhotoSwipe
       isOpen={isOpen}
       items={images}
-      options={options}
+      options={{
+        history: false,
+        ...options,
+      }}
       onClose={() => {
         setIsOpen(false)
       }}
