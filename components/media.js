@@ -6,6 +6,7 @@ import Segmented from './segmented'
 import Video from './video'
 import Poster from './poster'
 import MarkIcon from './icons/mark.svg'
+import Gallery from './gallery'
 
 export default function Media({ videos, posters, backdrops }) {
   const [tab, setTab] = useState('videos')
@@ -107,48 +108,90 @@ function Videos({ videos }) {
 
 function Backdrops({ backdrops }) {
   const { ref, scrollClass, onScroll } = useScrollFade()
+  const [isOpen, setIsOpen] = useState(false)
+  const [index, setIndex] = useState(0)
 
   return (
-    <div
-      ref={ref}
-      onScroll={onScroll}
-      className={clsx(
-        'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
-        scrollClass
-      )}
-    >
-      {backdrops.map((backdrop) => (
-        <div key={backdrop.id} className="aspect-video h-96">
-          <Image
-            className="w-full h-full rounded-xl"
-            src={`https://image.tmdb.org/t/p/w780${backdrop.file_path}`}
-            width={780}
-            height={240}
-            alt="backdrop"
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <div
+        ref={ref}
+        onScroll={onScroll}
+        className={clsx(
+          'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
+          scrollClass
+        )}
+      >
+        {backdrops.map((backdrop, index) => (
+          <div key={backdrop.id} className="aspect-video h-96">
+            <Image
+              className="w-full h-full rounded-xl"
+              src={`https://image.tmdb.org/t/p/w780${backdrop.file_path}`}
+              width={780}
+              height={240}
+              alt="backdrop"
+              onClick={() => {
+                setIndex(index)
+                setIsOpen(true)
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      <Gallery
+        isOpen={isOpen}
+        options={{
+          index,
+        }}
+        setIsOpen={setIsOpen}
+        images={backdrops.map((backdrop) => ({
+          src: `https://image.tmdb.org/t/p/original${backdrop.file_path}`,
+          w: backdrop.width,
+          h: backdrop.height,
+        }))}
+      />
+    </>
   )
 }
 
 function Posters({ posters }) {
   const { ref, scrollClass, onScroll } = useScrollFade()
+  const [isOpen, setIsOpen] = useState(false)
+  const [index, setIndex] = useState(0)
 
   return (
-    <div
-      ref={ref}
-      onScroll={onScroll}
-      className={clsx(
-        'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
-        scrollClass
-      )}
-    >
-      {posters.map((poster) => (
-        <div key={poster.id}>
-          <Poster className="h-96" path={poster.file_path} alt="poster" />
-        </div>
-      ))}
-    </div>
+    <>
+      <div
+        ref={ref}
+        onScroll={onScroll}
+        className={clsx(
+          'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
+          scrollClass
+        )}
+      >
+        {posters.map((poster, index) => (
+          <div
+            key={poster.id}
+            onClick={() => {
+              setIndex(index)
+              setIsOpen(true)
+            }}
+          >
+            <Poster className="h-96" path={poster.file_path} alt="poster" />
+          </div>
+        ))}
+      </div>
+      <Gallery
+        isOpen={isOpen}
+        options={{
+          index,
+        }}
+        setIsOpen={setIsOpen}
+        images={posters.map((poster) => ({
+          src: `https://image.tmdb.org/t/p/original${poster.file_path}`,
+          w: poster.width,
+          h: poster.height,
+        }))}
+      />
+    </>
   )
 }
