@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react'
 import Error from 'next/error'
 import NextNProgress from 'nextjs-progressbar'
 import '../styles/globals.css'
@@ -19,7 +18,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <NextNProgress color="#5A4AF4" />
       <Component {...pageProps} />
-      <Analytics />
     </>
   )
 }
