@@ -13,11 +13,6 @@ export default function Search({ forwardedRef }) {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    window.dataLayer.push({
-      event: 'search',
-      query: value,
-    })
-
     router.push({
       pathname: '/search',
       query: {
