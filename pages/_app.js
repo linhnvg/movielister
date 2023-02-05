@@ -5,6 +5,7 @@ import '@fontsource/poppins/400.css'
 import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
 import Script from 'next/script'
+import ScrollTop from '@components/scroll-top'
 
 function MyApp({ Component, pageProps }) {
   if (pageProps.error)
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }) {
 
       <NextNProgress color="#5A4AF4" />
       <Component {...pageProps} />
+      <ScrollTop />
     </>
   )
 }
