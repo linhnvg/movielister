@@ -43,6 +43,7 @@ export default function Footer() {
           </a>{' '}
           by{' '}
           <a
+            className="link"
             href="https://pramodpoudel.com.np/"
             target="_blank"
             rel="noreferrer"
