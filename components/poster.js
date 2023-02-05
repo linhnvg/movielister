@@ -10,7 +10,7 @@ export default function Poster({ path, alt, size, className, ...props }) {
       <img
         src={src}
         alt={alt}
-        className="rounded-xl object-cover"
+        className="rounded-xl object-cover w-full h-full"
         fill="true"
       />
     </div>
