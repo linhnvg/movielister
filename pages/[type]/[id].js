@@ -12,6 +12,7 @@ import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 import Media from '@components/media'
 import Footer from '@components/footer'
+import Card from '@components/card'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -317,71 +318,131 @@ export default function Home({
         )}
 
         {type === 'person' && (
-          <div
-            className={clsx(
-              'flex my-5 gap-12 md:gap-20 lg:flex-row',
-              type === 'person' ? 'flex-col' : 'flex-col-reverse'
-            )}
-          >
-            <div className="lg:w-1/2">
-              <div className="aspect-poster">
-                <Image
-                  src={profileData.img.src}
-                  alt={data.name}
-                  className="rounded-[40px] object-cover w-full h-full"
-                  placeholder={profileData.base64 ? 'blur' : 'empty'}
-                  blurDataURL={profileData.base64}
-                  width={480}
-                  height={710}
-                />
+          <div>
+            <div
+              className={clsx(
+                'flex my-5 gap-12 md:gap-20 lg:flex-row',
+                type === 'person' ? 'flex-col' : 'flex-col-reverse'
+              )}
+            >
+              <div className="lg:w-1/2">
+                <div className="aspect-poster">
+                  <Image
+                    src={profileData.img.src}
+                    alt={data.name}
+                    className="rounded-[40px] object-cover w-full h-full"
+                    placeholder={profileData.base64 ? 'blur' : 'empty'}
+                    blurDataURL={profileData.base64}
+                    width={480}
+                    height={710}
+                  />
+                </div>
+              </div>
+
+              <div className="lg:w-1/2 space-y-6">
+                {data.biography && (
+                  <div>
+                    <h2 className="heading">Biography</h2>
+                    <p className="text-white-65">{data.biography}</p>
+                  </div>
+                )}
+
+                <div className="grid grid-cols-2 gap-6">
+                  {data.known_for_department && (
+                    <p>
+                      <span className="text-sm text-white-30">Known for</span>
+                      <span className="block mt-2">
+                        {data.known_for_department}
+                      </span>
+                    </p>
+                  )}
+
+                  {data.birthday && (
+                    <p>
+                      <span className="text-sm text-white-30">Birthday</span>
+                      <span className="block mt-2">
+                        {format(new Date(data.birthday), 'dd MMMM, yyyy')}
+                      </span>
+                    </p>
+                  )}
+
+                  {data.place_of_birth && (
+                    <p>
+                      <span className="text-sm text-white-30">
+                        Place of Birth
+                      </span>
+                      <span className="block mt-2">{data.place_of_birth}</span>
+                    </p>
+                  )}
+
+                  {data.also_known_as.length > 0 && (
+                    <p>
+                      <span className="text-sm text-white-30">
+                        Also known as
+                      </span>
+                      <span className="block mt-2">
+                        {data.also_known_as.join(', ')}
+                      </span>
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
 
-            <div className="lg:w-1/2 space-y-6">
-              {data.biography && (
+            <div className="space-y-4">
+              {data.known_for_department === 'Directing' && (
                 <div>
-                  <h2 className="heading">Biography</h2>
-                  <p className="text-white-65">{data.biography}</p>
+                  <h3 className="heading mb-4">Directing Credits</h3>
+                  <div className="card-list">
+                    {data.credits?.crew
+                      ?.filter((credit) => credit.job === 'Director')
+                      .map((credit) => (
+                        <Card
+                          key={credit.credit_id}
+                          id={credit.id}
+                          image={credit.poster_path}
+                          title={credit.title}
+                          type="movie"
+                          rating={credit.vote_average}
+                        />
+                      ))}
+                  </div>
                 </div>
               )}
-
-              <div className="grid grid-cols-2 gap-6">
-                {data.known_for_department && (
-                  <p>
-                    <span className="text-sm text-white-30">Known for</span>
-                    <span className="block mt-2">
-                      {data.known_for_department}
-                    </span>
-                  </p>
-                )}
-
-                {data.birthday && (
-                  <p>
-                    <span className="text-sm text-white-30">Birthday</span>
-                    <span className="block mt-2">
-                      {format(new Date(data.birthday), 'dd MMMM, yyyy')}
-                    </span>
-                  </p>
-                )}
-
-                {data.place_of_birth && (
-                  <p>
-                    <span className="text-sm text-white-30">
-                      Place of Birth
-                    </span>
-                    <span className="block mt-2">{data.place_of_birth}</span>
-                  </p>
-                )}
-
-                {data.also_known_as.length > 0 && (
-                  <p>
-                    <span className="text-sm text-white-30">Also known as</span>
-                    <span className="block mt-2">
-                      {data.also_known_as.join(', ')}
-                    </span>
-                  </p>
-                )}
-              </div>
+              {data.credits?.cast?.length > 0 && (
+                <div>
+                  <h3 className="heading mb-4">Movie Credits</h3>
+                  <div className="card-list">
+                    {data.credits?.cast?.map((credit) => (
+                      <Card
+                        key={credit.credit_id}
+                        id={credit.id}
+                        image={credit.poster_path}
+                        title={credit.title}
+                        type="movie"
+                        rating={credit.vote_average}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+              {data.tv_credits?.cast?.length > 0 && (
+                <div>
+                  <h3 className="heading mb-4">TV Credits</h3>
+                  <div className="card-list">
+                    {data.tv_credits?.cast?.map((credit) => (
+                      <Card
+                        key={credit.credit_id}
+                        id={credit.id}
+                        image={credit.poster_path}
+                        title={credit.name}
+                        type="tv"
+                        rating={credit.vote_average}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -395,7 +456,7 @@ export default function Home({
 export async function getServerSideProps({ params }) {
   const response = await tmdb.get(`/${params.type}/${params.id}`, {
     params: {
-      append_to_response: 'credits,videos,images',
+      append_to_response: 'credits,videos,images,tv_credits',
     },
   })
 
