@@ -123,7 +123,7 @@ function Backdrops({ backdrops }) {
         {backdrops.map((backdrop, index) => (
           <div key={backdrop.id} className="aspect-video h-96">
             <img
-              className="w-full h-full rounded-xl"
+              className="w-full h-full rounded-xl cursor-zoom-in"
               src={`https://image.tmdb.org/t/p/w780${backdrop.file_path}`}
               width={780}
               height={240}
@@ -175,7 +175,11 @@ function Posters({ posters }) {
               setIsOpen(true)
             }}
           >
-            <Poster className="h-96" path={poster.file_path} alt="poster" />
+            <Poster
+              className="h-96 cursor-zoom-in"
+              path={poster.file_path}
+              alt="poster"
+            />
           </div>
         ))}
       </div>
