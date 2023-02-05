@@ -15,7 +15,10 @@ export default function Cast({ cast }) {
       onScroll={onScroll}
     >
       {cast.map((person) => (
-        <Link key={person.id} href={`/person/${person.id}`}>
+        <Link
+          key={person.cast_id || person.credit_id}
+          href={`/person/${person.id}`}
+        >
           <div className="flex items-center">
             <div className="aspect-square relative w-16 shrink-0">
               <img

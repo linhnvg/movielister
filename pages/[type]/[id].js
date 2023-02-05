@@ -74,7 +74,7 @@ export default function Home({
                     : 'Collection',
               },
               {
-                href: '#',
+                href: '##',
                 label: data.title || data.name,
               },
             ]}

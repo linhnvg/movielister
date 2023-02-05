@@ -7,7 +7,12 @@ export default function Poster({ path, alt, size, className, ...props }) {
 
   return (
     <div className={clsx('aspect-poster relative', className)} {...props}>
-      <img src={src} alt={alt} className="rounded-xl object-cover" fill />
+      <img
+        src={src}
+        alt={alt}
+        className="rounded-xl object-cover"
+        fill="true"
+      />
     </div>
   )
 }
