@@ -11,6 +11,7 @@ import Credits from '@components/credits'
 import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 import Media from '@components/media'
+import Recommendations from '@components/recommendations'
 import Footer from '@components/footer'
 import Card from '@components/card'
 import Link from 'next/link'
@@ -287,6 +288,10 @@ export default function Home({
                 </div>
               </Link>
             )}
+
+            {data.recommendations?.results?.length > 0 && (
+              <Recommendations recommendations={data.recommendations.results} />
+            )}
           </div>
         )}
 
@@ -464,7 +469,7 @@ export default function Home({
 export async function getServerSideProps({ params }) {
   const response = await tmdb.get(`/${params.type}/${params.id}`, {
     params: {
-      append_to_response: 'credits,videos,images,tv_credits',
+      append_to_response: 'credits,videos,images,tv_credits,recommendations',
     },
   })
 
