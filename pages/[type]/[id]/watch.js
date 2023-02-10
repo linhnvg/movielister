@@ -41,8 +41,20 @@ export default function Home({
         } — Movielister`}</title>
         <meta
           name="description"
-          content="Movielister, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"
+          content="Millions of movies, TV shows and people to discover. Explore now."
         />
+        <meta property="og:title" content={data.title || data.name} />
+        <meta property="og:description" content={data.overview} />
+        <meta
+          property="og:url"
+          content={`https://movielister.site/${type}/${data.id}`}
+        />
+        <meta property="og:image" content={posterData.img.src} />
+        <meta
+          name="twitter:image"
+          content={backdropData.img.src.replace('original', 'w780')}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
 

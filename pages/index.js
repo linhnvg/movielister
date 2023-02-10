@@ -17,7 +17,7 @@ export default function Home({ data, query }) {
         <title>Movielister &mdash; explore movies, tv shows and more</title>
         <meta
           name="description"
-          content="Movielister, Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur optio quas!"
+          content="Millions of movies, TV shows and people to discover. Explore now."
         />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
@@ -28,8 +28,7 @@ export default function Home({ data, query }) {
         <div className="my-20 max-w-xl">
           <h1 className="heading-xl">Movielister</h1>
           <p className="text-gray-400 mt-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            pariatur optio quas! ✌
+            Millions of movies, TV shows and people to discover. Explore now.
           </p>
 
           <Search />
