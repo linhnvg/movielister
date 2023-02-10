@@ -1,6 +1,6 @@
 import { tmdb } from '@lib/service'
 import { getPlaiceholder } from 'plaiceholder'
-import { countries } from '@lib/timezone.json'
+import zones from '@lib/timezones.json'
 import Navbar from '@components/navbar'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -26,11 +26,11 @@ export default function Home({
   useEffect(() => {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
-    Object.keys(countries).map((key) => {
-      if (countries[key].zones.includes(timezone)) {
-        setRegion(key)
-      }
-    })
+    if (!zones[timezone] || !zones[timezone].countries.length) {
+      return
+    }
+
+    setRegion(zones[timezone].countries[0])
   }, [])
 
   return (
