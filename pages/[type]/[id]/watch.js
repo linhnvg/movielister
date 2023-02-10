@@ -1,5 +1,6 @@
 import { tmdb } from '@lib/service'
 import { getPlaiceholder } from 'plaiceholder'
+import { countries } from '@lib/timezone.json'
 import Navbar from '@components/navbar'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -8,7 +9,7 @@ import Footer from '@components/footer'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { InputGroup, InputLabel } from '@components/input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Provider from '@components/provider'
 import ReactCountryFlag from 'react-country-flag'
 
@@ -21,6 +22,16 @@ export default function Home({
   posterData,
 }) {
   const [region, setRegion] = useState('US')
+
+  useEffect(() => {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+    Object.keys(countries).map((key) => {
+      if (countries[key].zones.includes(timezone)) {
+        setRegion(key)
+      }
+    })
+  }, [])
 
   return (
     <div>
