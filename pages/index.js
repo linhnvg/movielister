@@ -23,6 +23,36 @@ export default function Home({ data, query }) {
           name="keywords"
           content="where can i watch, movie, movies, tv, tv shows, cinema, movielister, movie list, list"
         />
+        <meta property="og:url" content="https://movielister.site" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Movielister - explore movies, tv shows and more"
+        />
+        <meta
+          property="og:description"
+          content="Millions of movies, TV shows and people to discover. Explore now."
+        />
+        <meta
+          property="og:image"
+          content="https://movielister.site/cover.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="movielister.site" />
+        <meta property="twitter:url" content="https://movielister.site" />
+        <meta
+          name="twitter:title"
+          content="Movielister - explore movies, tv shows and more"
+        />
+        <meta
+          name="twitter:description"
+          content="Millions of movies, TV shows and people to discover. Explore now."
+        />
+        <meta
+          name="twitter:image"
+          content="https://movielister.site/cover.png"
+        />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
 
