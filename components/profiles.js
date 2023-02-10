@@ -18,7 +18,7 @@ export default function Profiles({ profiles }) {
         ref={ref}
         onScroll={onScroll}
       >
-        {profiles.map((image) => (
+        {profiles.map((image, index) => (
           <div key={image.file_path} className="aspect-poster h-96">
             <img
               className="flex-shrink-0 rounded-xl h-full cursor-zoom-in"
