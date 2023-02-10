@@ -104,6 +104,14 @@ export default function Home({
               <div className="lg:w-1/2 space-y-6">
                 <h2 className="heading">{data.tagline || 'Overview'}</h2>
                 <p className="text-white-65">{data.overview}</p>
+
+                <Link
+                  href={`/${type}/${data.id}/watch`}
+                  className="flex justify-center button button-primary"
+                >
+                  Watch
+                </Link>
+
                 <Rating average={data.vote_average} />
 
                 {type === 'movie' && (
