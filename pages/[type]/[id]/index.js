@@ -12,6 +12,7 @@ import Breadcrumb from '@components/breadcrumb'
 import Cast from '@components/cast'
 import Media from '@components/media'
 import Recommendations from '@components/recommendations'
+import Profiles from '@components/profiles'
 import Footer from '@components/footer'
 import Card from '@components/card'
 import Link from 'next/link'
@@ -401,6 +402,13 @@ export default function Home({
                 </div>
               </div>
             </div>
+
+            {data.images.profiles.length > 1 && (
+              <div>
+                <h3 className="heading mb-4">Images</h3>
+                <Profiles profiles={data.images.profiles} />
+              </div>
+            )}
 
             <div className="space-y-4">
               {data.known_for_department === 'Directing' && (
