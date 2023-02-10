@@ -33,30 +33,46 @@ export default function Home({
           name="description"
           content="Millions of movies, TV shows and people to discover. Explore now."
         />
+        <meta
+          property="og:url"
+          content={`https://movielister.site/${type}/${data.id}`}
+        />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={data.title || data.name} />
         <meta
           property="og:description"
           content={type === 'person' ? data.biography : data.overview}
         />
         <meta
-          property="og:url"
+          property="og:image"
+          content={
+            type === 'person'
+              ? `https://image.tmdb.org/t/p/h632${data.profile_path}`
+              : `https://image.tmdb.org/t/p/w500${data.poster_path}`
+          }
+        />
+
+        <meta
+          name="twitter:card"
+          content={type === 'person' ? 'summary' : 'summary_large_image'}
+        />
+        <meta property="twitter:domain" content="movielister.site" />
+        <meta
+          property="twitter:url"
           content={`https://movielister.site/${type}/${data.id}`}
         />
+        <meta name="twitter:title" content={data.title || data.name} />
         <meta
-          property="og:image"
-          content={type === 'person' ? profileData.img.src : posterData.img.src}
+          name="twitter:description"
+          content={type === 'person' ? data.biography : data.overview}
         />
         <meta
           name="twitter:image"
           content={
             type === 'person'
-              ? profileData.img.src
-              : backdropData.img.src.replace('original', 'w780')
+              ? `https://image.tmdb.org/t/p/h632${data.profile_path}`
+              : `https://image.tmdb.org/t/p/w780${data.backdrop_path}`
           }
-        />
-        <meta
-          name="twitter:card"
-          content={type == 'person' ? 'summary' : 'summary_large_image'}
         />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
