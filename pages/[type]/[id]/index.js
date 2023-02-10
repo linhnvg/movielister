@@ -34,6 +34,10 @@ export default function Home({
           content="Millions of movies, TV shows and people to discover. Explore now."
         />
         <meta
+          name="keywords"
+          content="where can i watch, movie, movies, tv, tv shows, cinema, movielister, movie list, list"
+        />
+        <meta
           property="og:url"
           content={`https://movielister.site/${type}/${data.id}`}
         />
