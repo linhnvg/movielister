@@ -12,6 +12,7 @@ import { InputGroup, InputLabel } from '@components/input'
 import { useEffect, useState } from 'react'
 import Provider from '@components/provider'
 import ReactCountryFlag from 'react-country-flag'
+import JustWatch from '@components/icons/justwatch.svg'
 
 export default function Home({
   data,
@@ -139,11 +140,7 @@ export default function Home({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="/justwatch.svg"
-                    alt="JustWatch"
-                    className="w-32 flex-shrink-0 mr-16"
-                  />
+                  <JustWatch className="w-32 flex-shrink-0 mr-16" />
                 </a>
                 <InputGroup>
                   <ReactCountryFlag
