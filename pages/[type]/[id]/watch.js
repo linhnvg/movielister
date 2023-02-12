@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import Provider from '@components/provider'
 import ReactCountryFlag from 'react-country-flag'
 import JustWatch from '@components/icons/justwatch.svg'
+import Recommendations from '@components/recommendations'
 
 export default function Home({
   data,
@@ -119,7 +120,7 @@ export default function Home({
         </div>
 
         <div className="mt-8 md:m-12 md:mt-8 xl:m-20 xl:mt-8">
-          <div className="flex flex-col-reverse my-5 gap-12 md:gap-20 lg:flex-row">
+          <div className="flex flex-col-reverse mt-5 mb-8 gap-12 md:gap-20 lg:flex-row">
             <div className="lg:w-1/2">
               <div className="aspect-poster">
                 <Image
@@ -217,6 +218,10 @@ export default function Home({
               </Link>
             </div>
           </div>
+
+          {data.recommendations?.results?.length > 0 && (
+            <Recommendations recommendations={data.recommendations.results} />
+          )}
         </div>
       </div>
 
@@ -226,7 +231,11 @@ export default function Home({
 }
 
 export async function getServerSideProps({ params }) {
-  const response = await tmdb.get(`/${params.type}/${params.id}`)
+  const response = await tmdb.get(`/${params.type}/${params.id}`, {
+    params: {
+      append_to_response: 'recommendations',
+    },
+  })
   const regions = await tmdb.get(`/watch/providers/regions`)
   const providers = await tmdb.get(
     `/${params.type}/${params.id}/watch/providers`
