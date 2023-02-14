@@ -1,6 +1,10 @@
 .segments {
-  @apply bg-black-20 inline-flex items-center gap-1 rounded-xl backdrop-blur-md p-2 overflow-auto md:overflow-hidden w-full;
-  @apply md:w-auto;
+  @apply bg-black-20 inline-flex items-center gap-1 rounded-xl backdrop-blur-md p-2 overflow-auto w-full snap-x;
+  @apply md:w-auto md:overflow-hidden;
+}
+
+.segment {
+  @apply snap-start;
 }
 
 .segment input {
