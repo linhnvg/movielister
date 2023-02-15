@@ -1,11 +1,9 @@
 import { tmdb } from '@lib/service'
 import { format, formatDuration, intervalToDuration } from 'date-fns'
-import { getPlaiceholder } from 'plaiceholder'
 import ArrowIcon from '@components/icons/arrow.svg'
 import Navbar from '@components/navbar'
 import Rating from '@components/rating'
 import Head from 'next/head'
-import Image from 'next/image'
 import Part from '@components/part'
 import Credits from '@components/credits'
 import Breadcrumb from '@components/breadcrumb'
@@ -21,9 +19,9 @@ import clsx from 'clsx'
 export default function Home({
   data,
   type,
-  backdropData,
-  posterData,
-  profileData,
+  // backdropData,
+  // posterData,
+  // profileData,
 }) {
   return (
     <div>
@@ -86,15 +84,16 @@ export default function Home({
       <div className="container pb-12 mt-10">
         {type !== 'person' && (
           <div className="w-full relative">
-            <Image
-              src={backdropData.img.src}
+            <img
+              // src={backdropData.img.src}
+              src={`https://image.tmdb.org/t/p/w1280${data.backdrop_path}`}
               alt={data.title || data.name}
-              blurDataURL={backdropData.base64}
               className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
-              placeholder={backdropData.base64 ? 'blur' : 'empty'}
               loading="eager"
-              width={1600}
-              height={900}
+              // blurDataURL={backdropData.base64}
+              // placeholder={backdropData.base64 ? 'blur' : 'empty'}
+              // width={1600}
+              // height={900}
             />
           </div>
         )}
@@ -137,14 +136,15 @@ export default function Home({
             <div className="flex flex-col-reverse my-5 gap-12 md:gap-20 lg:flex-row">
               <div className="lg:w-1/2">
                 <div className="aspect-poster">
-                  <Image
-                    src={posterData.img.src}
+                  <img
+                    // src={posterData.img.src}
+                    src={`https://image.tmdb.org/t/p/w780${data.poster_path}`}
                     alt={data.title || data.name}
                     className="rounded-[40px] object-cover w-full h-full"
-                    placeholder={posterData.base64 ? 'blur' : 'empty'}
-                    blurDataURL={posterData.base64}
-                    width={480}
-                    height={710}
+                    // placeholder={posterData.base64 ? 'blur' : 'empty'}
+                    // blurDataURL={posterData.base64}
+                    // width={480}
+                    // height={710}
                   />
                 </div>
               </div>
@@ -386,14 +386,15 @@ export default function Home({
             >
               <div className="lg:w-1/2">
                 <div className="aspect-poster">
-                  <Image
-                    src={profileData.img.src}
+                  <img
+                    // src={profileData.img.src}
+                    src={`https://image.tmdb.org/t/p/w780${data.profile_path}`}
                     alt={data.name}
                     className="rounded-[40px] object-cover w-full h-full"
-                    placeholder={profileData.base64 ? 'blur' : 'empty'}
-                    blurDataURL={profileData.base64}
-                    width={480}
-                    height={710}
+                    // placeholder={profileData.base64 ? 'blur' : 'empty'}
+                    // blurDataURL={profileData.base64}
+                    // width={480}
+                    // height={710}
                   />
                 </div>
               </div>
@@ -543,42 +544,42 @@ export async function getServerSideProps({ params }) {
     }
   }
 
-  const backdropData = response.data.backdrop_path
-    ? await getPlaiceholder(
-        `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
-      )
-    : {
-        img: {
-          src: '/placeholder.svg',
-        },
-      }
+  // const backdropData = response.data.backdrop_path
+  //   ? await getPlaiceholder(
+  //       `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
+  //     )
+  //   : {
+  //       img: {
+  //         src: '/placeholder.svg',
+  //       },
+  //     }
 
-  const posterData = response.data.poster_path
-    ? await getPlaiceholder(
-        `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
-      )
-    : {
-        img: {
-          src: '/placeholder.svg',
-        },
-      }
+  // const posterData = response.data.poster_path
+  //   ? await getPlaiceholder(
+  //       `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
+  //     )
+  //   : {
+  //       img: {
+  //         src: '/placeholder.svg',
+  //       },
+  //     }
 
-  const profileData = response.data.profile_path
-    ? await getPlaiceholder(
-        `https://image.tmdb.org/t/p/original${response.data.profile_path}`
-      )
-    : {
-        img: {
-          src: '/placeholder.svg',
-        },
-      }
+  // const profileData = response.data.profile_path
+  //   ? await getPlaiceholder(
+  //       `https://image.tmdb.org/t/p/original${response.data.profile_path}`
+  //     )
+  //   : {
+  //       img: {
+  //         src: '/placeholder.svg',
+  //       },
+  //     }
   return {
     props: {
       type: params.type,
       data: response.data,
-      backdropData,
-      posterData,
-      profileData,
+      // backdropData,
+      // posterData,
+      // profileData,
     },
   }
 }

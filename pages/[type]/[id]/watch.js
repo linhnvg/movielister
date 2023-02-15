@@ -1,9 +1,7 @@
 import { tmdb } from '@lib/service'
-import { getPlaiceholder } from 'plaiceholder'
 import zones from '@lib/timezones.json'
 import Navbar from '@components/navbar'
 import Head from 'next/head'
-import Image from 'next/image'
 import Breadcrumb from '@components/breadcrumb'
 import Footer from '@components/footer'
 import Link from 'next/link'
@@ -20,8 +18,8 @@ export default function Home({
   type,
   regions,
   providers,
-  backdropData,
-  posterData,
+  // backdropData,
+  // posterData,
 }) {
   const [region, setRegion] = useState('US')
 
@@ -80,15 +78,16 @@ export default function Home({
 
       <div className="container pb-12 mt-10">
         <div className="w-full relative">
-          <Image
-            src={backdropData.img.src}
+          <img
+            // src={backdropData.img.src}
+            src={`https://image.tmdb.org/t/p/w1280${data.backdrop_path}`}
             alt={data.title || data.name}
-            blurDataURL={backdropData.base64}
             className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
-            placeholder={backdropData.base64 ? 'blur' : 'empty'}
             loading="eager"
-            width={1600}
-            height={900}
+            // blurDataURL={backdropData.base64}
+            // placeholder={backdropData.base64 ? 'blur' : 'empty'}
+            // width={1600}
+            // height={900}
           />
         </div>
         <div
@@ -123,14 +122,15 @@ export default function Home({
           <div className="flex flex-col-reverse mt-5 mb-8 gap-12 md:gap-20 lg:flex-row">
             <div className="lg:w-1/2">
               <div className="aspect-poster">
-                <Image
-                  src={posterData.img.src}
+                <img
+                  // src={posterData.img.src}
+                  src={`https://image.tmdb.org/t/p/w780${data.poster_path}`}
                   alt={data.title || data.name}
                   className="rounded-[40px] object-cover w-full h-full"
-                  placeholder={posterData.base64 ? 'blur' : 'empty'}
-                  blurDataURL={posterData.base64}
-                  width={480}
-                  height={710}
+                  // placeholder={posterData.base64 ? 'blur' : 'empty'}
+                  // blurDataURL={posterData.base64}
+                  // width={480}
+                  // height={710}
                 />
               </div>
             </div>
@@ -258,25 +258,25 @@ export async function getServerSideProps({ params }) {
     }
   }
 
-  const backdropData = response.data.backdrop_path
-    ? await getPlaiceholder(
-        `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
-      )
-    : {
-        img: {
-          src: '/placeholder.svg',
-        },
-      }
+  // const backdropData = response.data.backdrop_path
+  //   ? await getPlaiceholder(
+  //       `https://image.tmdb.org/t/p/original${response.data.backdrop_path}`
+  //     )
+  //   : {
+  //       img: {
+  //         src: '/placeholder.svg',
+  //       },
+  //     }
 
-  const posterData = response.data.poster_path
-    ? await getPlaiceholder(
-        `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
-      )
-    : {
-        img: {
-          src: '/placeholder.svg',
-        },
-      }
+  // const posterData = response.data.poster_path
+  //   ? await getPlaiceholder(
+  //       `https://image.tmdb.org/t/p/w780${response.data.poster_path}`
+  //     )
+  //   : {
+  //       img: {
+  //         src: '/placeholder.svg',
+  //       },
+  //     }
 
   return {
     props: {
@@ -284,8 +284,8 @@ export async function getServerSideProps({ params }) {
       data: response.data,
       regions: regions.data,
       providers: providers.data,
-      backdropData,
-      posterData,
+      // backdropData,
+      // posterData,
     },
   }
 }
