@@ -86,7 +86,11 @@ export default function Home({
           <div className="w-full relative">
             <img
               // src={backdropData.img.src}
-              src={`https://image.tmdb.org/t/p/w1280${data.backdrop_path}`}
+              src={
+                data.backdrop_path
+                  ? `https://image.tmdb.org/t/p/w1280${data.backdrop_path}`
+                  : '/placeholder.svg'
+              }
               alt={data.title || data.name}
               className="h-96 md:h-[480px] w-full object-cover object-center rounded-[40px]"
               loading="eager"
@@ -138,7 +142,11 @@ export default function Home({
                 <div className="aspect-poster">
                   <img
                     // src={posterData.img.src}
-                    src={`https://image.tmdb.org/t/p/w780${data.poster_path}`}
+                    src={
+                      data.poster_path
+                        ? `https://image.tmdb.org/t/p/w780${data.poster_path}`
+                        : '/placeholder.svg'
+                    }
                     alt={data.title || data.name}
                     className="rounded-[40px] object-cover w-full h-full"
                     // placeholder={posterData.base64 ? 'blur' : 'empty'}
@@ -388,7 +396,11 @@ export default function Home({
                 <div className="aspect-poster">
                   <img
                     // src={profileData.img.src}
-                    src={`https://image.tmdb.org/t/p/w780${data.profile_path}`}
+                    src={
+                      data.profile_path
+                        ? `https://image.tmdb.org/t/p/w780${data.profile_path}`
+                        : '/placeholder.svg'
+                    }
                     alt={data.name}
                     className="rounded-[40px] object-cover w-full h-full"
                     // placeholder={profileData.base64 ? 'blur' : 'empty'}
