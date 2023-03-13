@@ -1,21 +1,11 @@
-import { useScrollFade } from '@lib/hooks'
-import clsx from 'clsx'
 import Rating from './rating'
+import ScrollContent from './scroll-content'
 
 export default function Recommendations({ recommendations }) {
-  const { ref, scrollClass, onScroll } = useScrollFade()
-
   return (
     <div>
       <strong className="heading block mb-2">Recommendations</strong>
-      <div
-        className={clsx(
-          'flex gap-6 overflow-x-auto scroll-section',
-          scrollClass
-        )}
-        ref={ref}
-        onScroll={onScroll}
-      >
+      <ScrollContent className="gap-6">
         {recommendations.map((result) => (
           <a
             href={`/${result.title ? 'movie' : 'tv'}/${result.id}`}
@@ -44,7 +34,7 @@ export default function Recommendations({ recommendations }) {
             </div>
           </a>
         ))}
-      </div>
+      </ScrollContent>
     </div>
   )
 }

@@ -15,6 +15,7 @@ import Footer from '@components/footer'
 import Card from '@components/card'
 import Link from 'next/link'
 import clsx from 'clsx'
+import ScrollContent from '@components/scroll-content'
 
 export default function Home({
   data,
@@ -490,8 +491,10 @@ export default function Home({
               )}
               {data.credits?.cast?.length > 0 && (
                 <div>
-                  <h3 className="heading mb-4">Movie Credits</h3>
-                  <div className="card-list">
+                  <h3 className="heading mb-4">
+                    Movie Credits ({data.credits.cast.length})
+                  </h3>
+                  <ScrollContent className="gap-4">
                     {data.credits?.cast?.map((credit) => (
                       <Card
                         key={credit.credit_id}
@@ -500,15 +503,18 @@ export default function Home({
                         title={credit.title}
                         type="movie"
                         rating={credit.vote_average}
+                        className="w-64 flex-shrink-0"
                       />
                     ))}
-                  </div>
+                  </ScrollContent>
                 </div>
               )}
               {data.tv_credits?.cast?.length > 0 && (
                 <div>
-                  <h3 className="heading mb-4">TV Credits</h3>
-                  <div className="card-list">
+                  <h3 className="heading mb-4">
+                    TV Credits ({data.tv_credits.cast.length})
+                  </h3>
+                  <ScrollContent className="gap-4">
                     {data.tv_credits?.cast?.map((credit) => (
                       <Card
                         key={credit.credit_id}
@@ -517,9 +523,10 @@ export default function Home({
                         title={credit.name}
                         type="tv"
                         rating={credit.vote_average}
+                        className="w-64 flex-shrink-0"
                       />
                     ))}
-                  </div>
+                  </ScrollContent>
                 </div>
               )}
             </div>

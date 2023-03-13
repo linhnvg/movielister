@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { useScrollFade } from '@lib/hooks'
 import clsx from 'clsx'
 import Segmented from './segmented'
 import Video from './video'
 import Poster from './poster'
 import MarkIcon from './icons/mark.svg'
 import Gallery from './gallery'
+import ScrollContent from './scroll-content'
 
 export default function Media({ videos, posters, backdrops }) {
   const [tab, setTab] = useState('videos')
@@ -79,17 +79,8 @@ function NoResult() {
 }
 
 function Videos({ videos }) {
-  const { ref, scrollClass, onScroll } = useScrollFade()
-
   return (
-    <div
-      ref={ref}
-      onScroll={onScroll}
-      className={clsx(
-        'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
-        scrollClass
-      )}
-    >
+    <ScrollContent className={clsx(' py-4 w-full gap-8')}>
       {[
         ...videos.filter((video) => video.type === 'Trailer'),
         ...videos.filter((video) => video.type !== 'Trailer'),
@@ -101,25 +92,17 @@ function Videos({ videos }) {
           className="aspect-[4/3] h-96 relative"
         />
       ))}
-    </div>
+    </ScrollContent>
   )
 }
 
 function Backdrops({ backdrops }) {
-  const { ref, scrollClass, onScroll } = useScrollFade()
   const [isOpen, setIsOpen] = useState(false)
   const [index, setIndex] = useState(0)
 
   return (
     <>
-      <div
-        ref={ref}
-        onScroll={onScroll}
-        className={clsx(
-          'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
-          scrollClass
-        )}
-      >
+      <ScrollContent className="py-4 w-full gap-8">
         {backdrops.map((backdrop, index) => (
           <div key={backdrop.file_path} className="aspect-video h-96">
             <img
@@ -135,7 +118,7 @@ function Backdrops({ backdrops }) {
             />
           </div>
         ))}
-      </div>
+      </ScrollContent>
       <Gallery
         isOpen={isOpen}
         options={{
@@ -153,20 +136,12 @@ function Backdrops({ backdrops }) {
 }
 
 function Posters({ posters }) {
-  const { ref, scrollClass, onScroll } = useScrollFade()
   const [isOpen, setIsOpen] = useState(false)
   const [index, setIndex] = useState(0)
 
   return (
     <>
-      <div
-        ref={ref}
-        onScroll={onScroll}
-        className={clsx(
-          'relative scroll-section py-4 overflow-x-auto flex flex-nowrap w-full gap-8',
-          scrollClass
-        )}
-      >
+      <ScrollContent className="py-4 w-full gap-8">
         {posters.map((poster, index) => (
           <div
             key={poster.file_path}
@@ -182,7 +157,7 @@ function Posters({ posters }) {
             />
           </div>
         ))}
-      </div>
+      </ScrollContent>
       <Gallery
         isOpen={isOpen}
         options={{

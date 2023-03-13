@@ -1,23 +1,14 @@
-import { useScrollFade } from '@lib/hooks'
 import { useState } from 'react'
-import clsx from 'clsx'
 import Gallery from './gallery'
+import ScrollContent from './scroll-content'
 
 export default function Profiles({ profiles }) {
-  const { ref, scrollClass, onScroll } = useScrollFade()
   const [isOpen, setIsOpen] = useState(false)
   const [index, setIndex] = useState(0)
 
   return (
     <>
-      <div
-        className={clsx(
-          'flex overflow-x-auto gap-6 scroll-section',
-          scrollClass
-        )}
-        ref={ref}
-        onScroll={onScroll}
-      >
+      <ScrollContent className="gap-6">
         {profiles.map((image, index) => (
           <div key={image.file_path} className="aspect-poster h-96">
             <img
@@ -31,7 +22,7 @@ export default function Profiles({ profiles }) {
             />
           </div>
         ))}
-      </div>
+      </ScrollContent>
       <Gallery
         isOpen={isOpen}
         options={{

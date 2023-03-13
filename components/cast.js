@@ -1,19 +1,9 @@
-import { useScrollFade } from '@lib/hooks'
-import clsx from 'clsx'
 import Link from 'next/link'
+import ScrollContent from './scroll-content'
 
 export default function Cast({ cast }) {
-  const { ref, scrollClass, onScroll } = useScrollFade()
-
   return (
-    <div
-      ref={ref}
-      className={clsx(
-        'flex overflow-x-auto space-x-4 pb-4 scroll-section',
-        scrollClass
-      )}
-      onScroll={onScroll}
-    >
+    <ScrollContent className="space-x-4 pb-4">
       {cast.map((person) => (
         <Link
           key={person.cast_id || person.credit_id}
@@ -40,6 +30,6 @@ export default function Cast({ cast }) {
           </div>
         </Link>
       ))}
-    </div>
+    </ScrollContent>
   )
 }
